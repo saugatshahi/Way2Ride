@@ -1,7 +1,5 @@
 package app.vehicle.model;
 
-import java.util.Date;
-
 /**
  *
  * @author shahi

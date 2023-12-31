@@ -10,6 +10,7 @@ import app.vehicle.model.License;
 import app.vehicle.model.Security;
 
 /**
+ * 
  * @author shahi
  **/
 public class AuthDAO extends MySqlConnection {
@@ -37,19 +38,19 @@ public class AuthDAO extends MySqlConnection {
                         
                         String insertQuery2 = "INSERT INTO LICENSE_DETAILS (LicenseNumber, DateOfIssue, DateOfExpiry, licenseEmailRef) VALUES (?, ?, ?, ?)";
                         try (PreparedStatement ps1 = conn.prepareStatement(insertQuery2)) {
-                            ps1.setString(1, "");
-                            ps1.setString(2, "");
-                            ps1.setString(3, "");
-                            ps1.setInt(1, primaryKey);
+                            ps1.setString(1, lc.getLicenseNumber());
+                            ps1.setString(2, lc.getDateOfIssue());
+                            ps1.setString(3, lc.getDateOfExpiry());
+                            ps1.setInt(4, primaryKey);
                             
                             ps1.executeUpdate();
                         }
                         
                         String insertQuery3 = "INSERT INTO SECURITY_QSNS (SecurityAnswer1, SecurityAnswer2, SecurityAnswer3, securityEmailRef) VALUES (?, ?, ?, ?)";
                         try (PreparedStatement ps2 = conn.prepareStatement(insertQuery3)) {
-                            ps2.setString(1, "");
-                            ps2.setString(2, "");
-                            ps2.setString(3, "");
+                            ps2.setString(1, sc.getSecurityAnswer1());
+                            ps2.setString(2, sc.getSecurityAnswer2());
+                            ps2.setString(3, sc.getSecurityAnswer3());
                             ps2.setInt(4, primaryKey);
                             
                             ps2.executeUpdate();

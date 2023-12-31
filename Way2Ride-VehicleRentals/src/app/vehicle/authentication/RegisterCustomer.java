@@ -1,9 +1,7 @@
 package app.vehicle.authentication;
 
 import java.awt.Cursor;
-import app.vehicle.dao.AuthDAO;
 import app.vehicle.main.Application;
-import app.vehicle.model.Customer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
@@ -12,8 +10,6 @@ import javax.swing.JOptionPane;
 public class RegisterCustomer extends javax.swing.JPanel {
     
     private final Cursor handCursor;
-    private AuthDAO customerDAO;
-    private Customer model;
     
     public RegisterCustomer() {
         initComponents();
@@ -237,6 +233,13 @@ public class RegisterCustomer extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Password must be strong");
         } else {
 //            Application.registerAccount();
+
+System.out.println("Contact: " + getContactTextField());
+System.out.println("Country: " + getCountryTextField());
+System.out.println("Email: " + getEmailTextField());
+System.out.println("Address: " + getAddressTextField());
+System.out.println("Full Name: " + getFullNameTextField());
+System.out.println("Password: " + getPwdTextField());
             Application.openCustomerDocsForm();
         }
     }//GEN-LAST:event_continueRegisterBtnActionPerformed

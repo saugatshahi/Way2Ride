@@ -125,7 +125,12 @@ public class SecurityQsnForm extends javax.swing.JPanel {
 
     private void registerFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerFinalActionPerformed
 //        Application.registerAccount();
+
+System.out.println("1 " + getSecurityAnswer1());
+System.out.println("2 " + getSecurityAnswer2());
+System.out.println("3 " + getSecurityAnswer3());
         boolean registrationResult = Application.registerAccount(rc, rd, this);
+        
         if (registrationResult){
             JOptionPane.showMessageDialog(null, "Okay");
             Application.openCustomerDocsForm();

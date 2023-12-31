@@ -1,5 +1,6 @@
 package app.vehicle.main;
 
+import app.admin.form.AdminDashboard;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
@@ -20,7 +21,6 @@ import app.vehicle.dao.AuthDAO;
 import app.vehicle.model.Customer;
 import app.vehicle.model.License;
 import app.vehicle.model.Security;
-import java.sql.SQLException;
 
 /**
  * 
@@ -36,6 +36,7 @@ public class Application extends javax.swing.JFrame {
     private final RegisterCustomer signupForm;
     private final RegisterDocument customerDocs;
     private final SecurityQsnForm securityQsnForm;
+    private final AdminDashboard adminDashboard;
 
     public Application() {
         initComponents();
@@ -46,6 +47,7 @@ public class Application extends javax.swing.JFrame {
         signupForm = new RegisterCustomer();
         customerDocs = new RegisterDocument();
         securityQsnForm = new SecurityQsnForm();
+        adminDashboard = new AdminDashboard();
         
         setContentPane(loginForm);
         Notifications.getInstance().setJFrame(this);
@@ -105,6 +107,20 @@ public class Application extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(application.loginForm);
         FlatAnimatedLafChange.hideSnapshotWithAnimation();
     }
+    
+    /**
+     * 
+     * ADMIN DASHBOARD METHODS
+     *
+     **/
+    
+    public static void openAdminDashboard() {
+        FlatAnimatedLafChange.showSnapshot();
+        application.setContentPane(application.adminDashboard);
+        application.applyComponentOrientation(application.getComponentOrientation());
+        SwingUtilities.updateComponentTreeUI(application.adminDashboard);
+        FlatAnimatedLafChange.hideSnapshotWithAnimation();
+    }
 
     public static void setSelectedMenu(int index, int subIndex) {
         application.mainForm.setSelectedMenu(index, subIndex);
@@ -121,14 +137,12 @@ public class Application extends javax.swing.JFrame {
                 signup.getPwdTextField()   
         );
         
-//        RegisterDocument rd = new RegisterDocument();
         License license = new License(
                 rd.getLicenseNumber(),
                 rd.getDateOfIssue(),
                 rd.getDateOfExpiry()
         );
         
-//        SecurityQsnForm sqf = new SecurityQsnForm();
         Security security = new Security(
                 sqf.getSecurityAnswer1(),
                 sqf.getSecurityAnswer2(),
@@ -144,26 +158,7 @@ public class Application extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Register UnSuccessfull");
         }
         return check;
-    }  
-    
-//    public static boolean authenticateUser(String emailAddress, String enteredPwd) {
-////        AuthDAO authDAO = new AuthDAO();
-////        try {
-////            String user = authDAO.getStoredPassword(emailAddress);
-////            
-////            if (user != null) {
-////                String storedHashedPassword = authDAO.getStoredPassword(emailAddress);
-////                if(enteredPwd.equals(storedHashedPassword)) {
-////                    return true;
-////                }
-////            }
-////        } catch (SQLException e) {
-////            
-////        }
-////        return false;
-//    }
-    
-    
+    } 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

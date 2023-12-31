@@ -237,6 +237,11 @@ public class LoginForm extends javax.swing.JPanel {
     }//GEN-LAST:event_signupLbButtonMouseClicked
 
     private void loginValidationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginValidationActionPerformed
+        char[] pwdChars = pwdEntry.getPassword();
+        String pwdString = new String(pwdChars);
+        if (userEntry.getText().equals("admin") && pwdString.equals("admin")) {
+            Application.openAdminDashboard();
+        }
 //       if (Application.authenticateUser(getUserEntry(), getPwdEntry())) {
 //           JOptionPane.showMessageDialog(this, "Password didn't match!");
 //       }

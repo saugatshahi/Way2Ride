@@ -61,3 +61,6 @@ menu.addMenuEvent(new MenuEvent() {
 - Remove user
 - Settings
 - Notification Preferences
+
+  #Category Managed
+  - dasjhfas

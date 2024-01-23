@@ -1,20 +1,43 @@
 package app.vehicle.form;
 
+import app.admin.menu.ScrollBar;
+import app.vehicle.component.CarItem;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import raven.glasspanepopup.DefaultOption;
 import raven.glasspanepopup.GlassPanePopup;
+import raven.modelItem.ModelItem;
 
 public class Dashboard extends javax.swing.JPanel {
+       private List<ModelItem> itemList;
     
     private Notification notify;
 
     public Dashboard() throws FontFormatException {
         initComponents();
+         scroll.setVerticalScrollBar(new ScrollBar());
+        itemList = new ArrayList<>(); // Initialize the list
+        
+        // Add some sample items for testing
+        
+        for (int i = 0; i < 10; i++) {
+        addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
+        addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
+        addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
+        addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
+
+        }
         
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
         try {
@@ -27,6 +50,27 @@ public class Dashboard extends javax.swing.JPanel {
             jLabel2.putClientProperty(FlatClientProperties.STYLE, "");
         } catch (IOException | FontFormatException e) {
             System.out.println(e);
+        }
+    }
+    public void addItem(ModelItem data){
+        CarItem caritem = new CarItem();
+        caritem.setData(data);
+        caritem.addMouseListener(new MouseAdapter(){
+        @Override
+        public void mousePressed(MouseEvent me) {
+            if(SwingUtilities.isLeftMouseButton(me)){
+                
+            }
+        }
+         });
+        panelItem1.add(caritem);
+        panelItem1.repaint();
+        panelItem1.revalidate();
+    }
+      public void printLoopData() {
+        System.out.println("Loop Data:");
+        for (ModelItem item : itemList) {
+            System.out.println(item);
         }
     }
 
@@ -44,6 +88,8 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        scroll = new javax.swing.JScrollPane();
+        panelItem1 = new app.vehicle.design.PanelItem();
 
         textBox1.setBackground(new java.awt.Color(237, 237, 237));
         textBox1.setRoundBottomLeft(12);
@@ -100,24 +146,14 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel4.setText("Logout");
         jLabel4.setIconTextGap(8);
 
+        scroll.setBorder(null);
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setViewportView(panelItem1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(329, 329, 329)
                 .addComponent(jLabel1)
@@ -126,6 +162,23 @@ public class Dashboard extends javax.swing.JPanel {
                 .addGap(63, 63, 63)
                 .addComponent(jLabel4)
                 .addGap(45, 45, 45))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +200,8 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,6 +230,8 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private app.vehicle.design.PanelItem panelItem1;
+    private javax.swing.JScrollPane scroll;
     private app.vehicle.design.PanelRound textBox1;
     private app.vehicle.design.PanelRound textBox2;
     private app.vehicle.design.PanelRound textBox3;

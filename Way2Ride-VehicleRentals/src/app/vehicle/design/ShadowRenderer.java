@@ -1,6 +1,5 @@
 package app.vehicle.design;
 
-import app.vehicle.design.GraphicsUtilities;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 

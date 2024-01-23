@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
+import raven.toast.Notifications;
 
 public class RegisterCustomer extends javax.swing.JPanel {
     
@@ -19,15 +20,18 @@ public class RegisterCustomer extends javax.swing.JPanel {
     }
 
     public String getFullNameTextField() {
-        return fullNameTextField.getText();
+        String fullName = fullNameTextField.getText();
+        return fullName;
     }
     
     public String getEmailTextField() {
-        return emailTextField.getText();
+        String emailAddress = emailTextField.getText();
+        return emailAddress;
     }
     
     public String getCountryTextField() {
-        return countryTextField.getText();
+        String countryName = countryTextField.getText();
+        return countryName;
     }
     
     private boolean isValidPhoneNumber(String phoneNo) {
@@ -40,7 +44,8 @@ public class RegisterCustomer extends javax.swing.JPanel {
     }
     
     public String getAddressTextField() {
-        return addressTextField.getText();
+        String homeAddress = addressTextField.getText();
+        return homeAddress;
     }
     
     
@@ -104,9 +109,9 @@ public class RegisterCustomer extends javax.swing.JPanel {
 
         registerText.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         registerText.setForeground(new java.awt.Color(255, 92, 0));
-        registerText.setText("Create an acccount!");
+        registerText.setText("Create a new user account!");
         pictureBox2.add(registerText);
-        registerText.setBounds(840, 60, 210, 40);
+        registerText.setBounds(810, 60, 300, 40);
 
         countryLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         countryLabel.setText("Country");
@@ -175,7 +180,7 @@ public class RegisterCustomer extends javax.swing.JPanel {
         continueRegisterBtn.setBounds(660, 630, 602, 40);
 
         policyCheckBox.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        policyCheckBox.setText("By clicking Continue, you agree to Way2Ride's User Agreement, Privacy Policy");
+        policyCheckBox.setText("By clicking Continue, you agree to Way2Ride's User Agreement & Privacy Policy.");
         policyCheckBox.setIconTextGap(10);
         policyCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +188,7 @@ public class RegisterCustomer extends javax.swing.JPanel {
             }
         });
         pictureBox2.add(policyCheckBox);
-        policyCheckBox.setBounds(660, 560, 540, 25);
+        policyCheckBox.setBounds(660, 560, 570, 25);
 
         IconSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/UserIcon.png"))); // NOI18N
         pictureBox2.add(IconSignup);
@@ -227,19 +232,16 @@ public class RegisterCustomer extends javax.swing.JPanel {
     private void continueRegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueRegisterBtnActionPerformed
         if (getContactTextField().isEmpty() || getCountryTextField().isEmpty() || getEmailTextField().isEmpty() || getAddressTextField().isEmpty() || getFullNameTextField().isEmpty() || getPwdTextField().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please fill in all the credentials and proceed!");
+            return;
         } else if (!isValidPhoneNumber(contactTextField.getText())) {
             JOptionPane.showMessageDialog(this, "Phone Number must be 10 digits long.");
+            return;
         } else if (!isStrongPassword(pwdTextField.getText())) {
             JOptionPane.showMessageDialog(this, "Password must be strong");
+            return;
         } else {
-//            Application.registerAccount();
-
-System.out.println("Contact: " + getContactTextField());
-System.out.println("Country: " + getCountryTextField());
-System.out.println("Email: " + getEmailTextField());
-System.out.println("Address: " + getAddressTextField());
-System.out.println("Full Name: " + getFullNameTextField());
-System.out.println("Password: " + getPwdTextField());
+            SecurityQsnForm.registerCustomer = this;
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "User details saved successfully. Proceed to the next step");
             Application.openCustomerDocsForm();
         }
     }//GEN-LAST:event_continueRegisterBtnActionPerformed

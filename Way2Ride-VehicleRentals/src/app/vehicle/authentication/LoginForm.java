@@ -1,31 +1,23 @@
 package app.vehicle.authentication;
 
+import app.admin.main.RunAdminPanel;
 import app.vehicle.main.Application;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.io.IOException;
+import java.awt.Window;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class LoginForm extends javax.swing.JPanel {
     
-    private Cursor buttonCursor;
+    private final Cursor buttonCursor;
+    
     public LoginForm() {
+        
         initComponents();
-            
-        String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
-        try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(fontFilePath));
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(customFont);
-        } catch (IOException | FontFormatException e) {
-            System.out.println(e);
-        }
         
         pwdEntry.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
         buttonCursor = new Cursor(Cursor.HAND_CURSOR);
@@ -34,10 +26,11 @@ public class LoginForm extends javax.swing.JPanel {
         signupLbButton.setCursor(buttonCursor);
         aboutUs.setCursor(buttonCursor);
         loginValidation.setCursor(buttonCursor);
+        aboutUsPanel.setCursor(buttonCursor);
     }
     
     public String getUserEntry() {
-        return this.userEntry.getText();
+        return this.emailEntry.getText();
     }
     
     public String getPwdEntry() {
@@ -72,10 +65,10 @@ public class LoginForm extends javax.swing.JPanel {
     private void initComponents() {
 
         pictureBox1 = new app.vehicle.design.PictureBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        welcomeText = new javax.swing.JLabel();
+        userImage = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
-        userEntry = new javax.swing.JTextField();
+        emailEntry = new javax.swing.JTextField();
         pwdLabel = new javax.swing.JLabel();
         pwdEntry = new javax.swing.JPasswordField();
         loginValidation = new javax.swing.JButton();
@@ -93,24 +86,24 @@ public class LoginForm extends javax.swing.JPanel {
 
         pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/LoginBackground.png"))); // NOI18N
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+10));
-        jLabel1.setForeground(new java.awt.Color(255, 92, 0));
-        jLabel1.setText("Welcome to our application!");
-        pictureBox1.add(jLabel1);
-        jLabel1.setBounds(922, 80, 310, 40);
+        welcomeText.setFont(welcomeText.getFont().deriveFont(welcomeText.getFont().getStyle() | java.awt.Font.BOLD, welcomeText.getFont().getSize()+10));
+        welcomeText.setForeground(new java.awt.Color(255, 92, 0));
+        welcomeText.setText("Welcome to our application!");
+        pictureBox1.add(welcomeText);
+        welcomeText.setBounds(922, 80, 310, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/UserIcon.png"))); // NOI18N
-        pictureBox1.add(jLabel2);
-        jLabel2.setBounds(1044, 146, 50, 50);
+        userImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/UserIcon.png"))); // NOI18N
+        pictureBox1.add(userImage);
+        userImage.setBounds(1044, 146, 50, 50);
 
         userLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         userLabel.setText("Email Address");
         pictureBox1.add(userLabel);
         userLabel.setBounds(890, 238, 110, 22);
 
-        userEntry.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        pictureBox1.add(userEntry);
-        userEntry.setBounds(890, 272, 370, 40);
+        emailEntry.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        pictureBox1.add(emailEntry);
+        emailEntry.setBounds(890, 272, 370, 40);
 
         pwdLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         pwdLabel.setText("Password");
@@ -239,16 +232,24 @@ public class LoginForm extends javax.swing.JPanel {
     private void loginValidationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginValidationActionPerformed
         char[] pwdChars = pwdEntry.getPassword();
         String pwdString = new String(pwdChars);
-        if (userEntry.getText().equals("admin") && pwdString.equals("admin")) {
-            Application.openAdminDashboard();
+        if (emailEntry.getText().equals("admin") && pwdString.equals("admin")) {
+            RunAdminPanel adminDashboard = new RunAdminPanel();
+
+            adminDashboard.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+            adminDashboard.setVisible(true);
+
+        // Find the top-level window and dispose it
+            Window parentWindow = SwingUtilities.getWindowAncestor(this);
+            if (parentWindow != null) {
+                parentWindow.dispose();
+            }
+        } else {
+            boolean checkValidity = Application.performLogin(getUserEntry(), getPwdEntry());
+            if (checkValidity) {
+                Application.getIntoApp();
+            }
         }
-//       if (Application.authenticateUser(getUserEntry(), getPwdEntry())) {
-//           JOptionPane.showMessageDialog(this, "Password didn't match!");
-//       }
-//       else {
-//           JOptionPane.showMessageDialog(this, "Login Successful!");
-//           Application.getIntoApp();
-//       }
     }//GEN-LAST:event_loginValidationActionPerformed
 
 
@@ -257,9 +258,8 @@ public class LoginForm extends javax.swing.JPanel {
     private app.vehicle.design.PanelRound aboutUsPanel;
     private javax.swing.JLabel appLogo;
     private javax.swing.JLabel copyrightText;
+    private javax.swing.JTextField emailEntry;
     private javax.swing.JLabel forgotPwdButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginValidation;
     private app.vehicle.design.PictureBox pictureBox1;
     private javax.swing.JPasswordField pwdEntry;
@@ -270,7 +270,8 @@ public class LoginForm extends javax.swing.JPanel {
     private javax.swing.JLabel sloganText1;
     private javax.swing.JLabel sloganText2;
     private javax.swing.JLabel sloganText3;
-    private javax.swing.JTextField userEntry;
+    private javax.swing.JLabel userImage;
     private javax.swing.JLabel userLabel;
+    private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
 }

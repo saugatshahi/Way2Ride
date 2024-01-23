@@ -13,21 +13,21 @@ public class Customer {
     private final String password;
     private final String contactNo;
 
-    public Customer(String fullName, String emailAddress, String contactNo, String country, String homeAddress, String password) {
-        this.fullName = fullName;
+    public Customer(String emailAddress, String fullName, String contactNo, String country, String homeAddress, String password) {
         this.emailAddress = emailAddress;
+        this.fullName = fullName;
         this.contactNo = contactNo;
         this.country = country;
         this.homeAddress = homeAddress;
         this.password = password;
     }
-    
-    public String getFullName() {
-        return this.fullName;
-    }
 
     public String getEmailAddress() {
         return this.emailAddress;
+    }
+    
+    public String getFullName() {
+        return this.fullName;
     }
     
     public String getContactNo() {

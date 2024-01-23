@@ -9,14 +9,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.geom.Path2D;
+import java.io.IOException;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -52,7 +56,6 @@ public class MenuItem extends JPanel {
         return menuIndex;
     }
 
-    private final List<MenuEvent> events;
     private final Menu menu;
     private final String menus[];
     private final int menuIndex;
@@ -70,7 +73,6 @@ public class MenuItem extends JPanel {
         this.menu = menu;
         this.menus = menus;
         this.menuIndex = menuIndex;
-        this.events = events;
         init();
     }
 
@@ -121,8 +123,8 @@ public class MenuItem extends JPanel {
         boolean selected = false;
         for (int i = 0; i < size; i++) {
             Component com = getComponent(i);
-            if (com instanceof JButton) {
-                ((JButton) com).setSelected(i == index);
+            if (com instanceof JButton jButton) {
+                jButton.setSelected(i == index);
                 if (i == index) {
                     selected = true;
                 }
@@ -133,7 +135,19 @@ public class MenuItem extends JPanel {
     }
 
     private JButton createButtonItem(String text) {
+        
         JButton button = new JButton(text);
+        String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
+        try {
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(fontFilePath));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(customFont);
+            
+            Font sizedFont = customFont.deriveFont((float) 14);
+            button.setFont(sizedFont);
+        } catch (IOException | FontFormatException e) {
+            System.out.println(e);
+        }
         button.putClientProperty(FlatClientProperties.STYLE, ""
                 + "background:$Menu.background;"
                 + "foreground:$Menu.foreground;"
@@ -158,16 +172,14 @@ public class MenuItem extends JPanel {
             int size = getComponentCount();
             for (int i = 0; i < size; i++) {
                 Component com = getComponent(i);
-                if (com instanceof JButton) {
-                    JButton button = (JButton) com;
+                if (com instanceof JButton button) {
                     button.setText(menus[i]);
                     button.setHorizontalAlignment(getComponentOrientation().isLeftToRight() ? JButton.LEFT : JButton.RIGHT);
                 }
             }
         } else {
             for (Component com : getComponents()) {
-                if (com instanceof JButton) {
-                    JButton button = (JButton) com;
+                if (com instanceof JButton button) {
                     button.setText("");
                     button.setHorizontalAlignment(JButton.CENTER);
                 }

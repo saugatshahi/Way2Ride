@@ -1,9 +1,14 @@
 package app.vehicle.authentication;
 
 import app.vehicle.main.Application;
+import com.formdev.flatlaf.FlatClientProperties;
+import java.awt.Cursor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.nio.file.Files;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -16,158 +21,184 @@ import raven.toast.Notifications;
  */
 public class RegisterDocument extends javax.swing.JPanel {
     
+    private final Cursor buttonHandCursor;
+    
     private File selectedFile;
+    private byte[] imageData;
+    
     public RegisterDocument() {
+        
         initComponents();
+        
+        buttonHandCursor = new Cursor(Cursor.HAND_CURSOR);
+        
+        licenseNumber.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "e.g. 1234567890123456");
+        dateOfIssue.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "YYYY-MM-DD, e.g., 2025-01-31");
+        dateOfExpiry.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "YYYY-MM-DD, e.g., 2025-01-31");
+        
+        skipButton.setCursor(buttonHandCursor);
+        continueButton.setCursor(buttonHandCursor);
     }
     
     public String getLicenseNumber() {
-        return this.licenseNumber.getText();
+        String licenseNumberValue = licenseNumber.getText();
+        return licenseNumberValue;
     }
     
+    public byte[] getImageData() {
+        return this.imageData;
+    }
     public String getDateOfIssue() {
-        return this.dateOfIssue.getText();
+        String issuedDate = dateOfIssue.getText();
+        return issuedDate;
     }
     
     public String getDateOfExpiry() {
-        return this.dateOfExpiry.getText();
+        String expiryDate = dateOfExpiry.getText();
+        return expiryDate;
     }
+    
+    private boolean isValidDateFormat(String date) {
+        return date.matches("\\d{4}-\\d{2}-\\d{2}");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         pictureBox1 = new app.vehicle.design.PictureBox();
         panelRound1 = new app.vehicle.design.PanelRound();
-        pictureBox2 = new app.vehicle.design.PictureBox();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        uploadPictureBox = new app.vehicle.design.PictureBox();
+        uploadText = new javax.swing.JLabel();
+        uploadLicenseHeaderText = new javax.swing.JLabel();
+        expiryDateLabel = new javax.swing.JLabel();
         dateOfExpiry = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        licenseLabel = new javax.swing.JLabel();
         licenseNumber = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        issuedDateLabel = new javax.swing.JLabel();
         dateOfIssue = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        disabledTextField = new javax.swing.JTextField();
+        skipButton = new javax.swing.JButton();
+        continueButton = new javax.swing.JButton();
+        rulesHeaderText3 = new javax.swing.JLabel();
+        descHeaderText = new javax.swing.JLabel();
+        rulesHeaderText1 = new javax.swing.JLabel();
+        rulesHeaderText2 = new javax.swing.JLabel();
 
         pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/SignupBackground.png"))); // NOI18N
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 92, 0), 2, true));
 
-        pictureBox2.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/upload.png"))); // NOI18N
-        pictureBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+        uploadPictureBox.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/upload.png"))); // NOI18N
+        uploadPictureBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pictureBox2MouseClicked(evt);
+                uploadPictureBoxMouseClicked(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 92, 0));
-        jLabel9.setText("Upload licensing");
-        pictureBox2.add(jLabel9);
-        jLabel9.setBounds(76, 130, 120, 20);
+        uploadText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        uploadText.setForeground(new java.awt.Color(255, 92, 0));
+        uploadText.setText("Upload licensing");
+        uploadPictureBox.add(uploadText);
+        uploadText.setBounds(72, 130, 120, 20);
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pictureBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+            .addComponent(uploadPictureBox, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pictureBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+            .addComponent(uploadPictureBox, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
         );
 
         pictureBox1.add(panelRound1);
         panelRound1.setBounds(670, 360, 260, 180);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 92, 0));
-        jLabel1.setText("Upload your license here!");
-        pictureBox1.add(jLabel1);
-        jLabel1.setBounds(850, 60, 270, 50);
+        uploadLicenseHeaderText.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        uploadLicenseHeaderText.setForeground(new java.awt.Color(255, 92, 0));
+        uploadLicenseHeaderText.setText("Upload your license here!");
+        pictureBox1.add(uploadLicenseHeaderText);
+        uploadLicenseHeaderText.setBounds(850, 60, 270, 50);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setText("Date of Expiry");
-        pictureBox1.add(jLabel2);
-        jLabel2.setBounds(970, 530, 120, 22);
+        expiryDateLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        expiryDateLabel.setText("Date of Expiry");
+        pictureBox1.add(expiryDateLabel);
+        expiryDateLabel.setBounds(970, 527, 120, 22);
         pictureBox1.add(dateOfExpiry);
-        dateOfExpiry.setBounds(970, 560, 270, 30);
+        dateOfExpiry.setBounds(970, 557, 270, 33);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setText("License Number");
-        pictureBox1.add(jLabel3);
-        jLabel3.setBounds(970, 350, 120, 22);
+        licenseLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        licenseLabel.setText("License Number");
+        pictureBox1.add(licenseLabel);
+        licenseLabel.setBounds(970, 350, 120, 22);
         pictureBox1.add(licenseNumber);
-        licenseNumber.setBounds(970, 380, 270, 30);
+        licenseNumber.setBounds(970, 380, 270, 33);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel4.setText("Date of Issue");
-        pictureBox1.add(jLabel4);
-        jLabel4.setBounds(970, 440, 120, 22);
+        issuedDateLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        issuedDateLabel.setText("Date of Issue");
+        pictureBox1.add(issuedDateLabel);
+        issuedDateLabel.setBounds(970, 437, 120, 22);
         pictureBox1.add(dateOfIssue);
-        dateOfIssue.setBounds(970, 470, 270, 30);
+        dateOfIssue.setBounds(970, 467, 270, 33);
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("example.png");
-        jTextField4.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        jTextField4.setEnabled(false);
-        pictureBox1.add(jTextField4);
-        jTextField4.setBounds(670, 560, 260, 30);
+        disabledTextField.setBackground(new java.awt.Color(242, 242, 242));
+        disabledTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        disabledTextField.setText("example.png");
+        disabledTextField.setDisabledTextColor(new java.awt.Color(81, 81, 81));
+        disabledTextField.setEnabled(false);
+        pictureBox1.add(disabledTextField);
+        disabledTextField.setBounds(670, 560, 260, 30);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 92, 0));
-        jButton1.setText("SKIP");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 92, 0), 2, true));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        skipButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        skipButton.setForeground(new java.awt.Color(255, 92, 0));
+        skipButton.setText("SKIP");
+        skipButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 92, 0), 2, true));
+        skipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                skipButtonActionPerformed(evt);
             }
         });
-        pictureBox1.add(jButton1);
-        jButton1.setBounds(670, 650, 260, 40);
+        pictureBox1.add(skipButton);
+        skipButton.setBounds(670, 650, 260, 40);
 
-        jButton2.setBackground(new java.awt.Color(255, 92, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CONTINUE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        continueButton.setBackground(new java.awt.Color(255, 92, 0));
+        continueButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        continueButton.setForeground(new java.awt.Color(255, 255, 255));
+        continueButton.setText("CONTINUE");
+        continueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                continueButtonActionPerformed(evt);
             }
         });
-        pictureBox1.add(jButton2);
-        jButton2.setBounds(970, 650, 270, 40);
+        pictureBox1.add(continueButton);
+        continueButton.setBounds(970, 650, 270, 40);
 
-        jLabel5.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("3. In jurisdictions, the minimum age for renting a self drive vehicle is legally regulated.");
-        pictureBox1.add(jLabel5);
-        jLabel5.setBounds(630, 270, 670, 20);
+        rulesHeaderText3.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 15)); // NOI18N
+        rulesHeaderText3.setForeground(new java.awt.Color(102, 102, 102));
+        rulesHeaderText3.setText("3. In jurisdictions, the minimum age for renting a self drive vehicle is legally regulated.");
+        pictureBox1.add(rulesHeaderText3);
+        rulesHeaderText3.setBounds(630, 270, 670, 20);
 
-        jLabel6.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Why do we need your licensing?");
-        pictureBox1.add(jLabel6);
-        jLabel6.setBounds(630, 160, 270, 21);
+        descHeaderText.setFont(new java.awt.Font("Microsoft PhagsPa", 1, 16)); // NOI18N
+        descHeaderText.setForeground(new java.awt.Color(102, 102, 102));
+        descHeaderText.setText("Why do we need your licensing?");
+        pictureBox1.add(descHeaderText);
+        descHeaderText.setBounds(630, 160, 270, 21);
 
-        jLabel7.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("1. We comply with local and national laws regarding the rental of vehicles.");
-        pictureBox1.add(jLabel7);
-        jLabel7.setBounds(630, 200, 500, 20);
+        rulesHeaderText1.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 15)); // NOI18N
+        rulesHeaderText1.setForeground(new java.awt.Color(102, 102, 102));
+        rulesHeaderText1.setText("1. We comply with local and national laws regarding the rental of vehicles.");
+        pictureBox1.add(rulesHeaderText1);
+        rulesHeaderText1.setBounds(630, 200, 500, 20);
 
-        jLabel8.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("2. Valid driver's license are an essential part of verifying a person's ability to operate a vehicle safely.");
-        pictureBox1.add(jLabel8);
-        jLabel8.setBounds(630, 230, 670, 30);
+        rulesHeaderText2.setFont(new java.awt.Font("Microsoft PhagsPa", 0, 15)); // NOI18N
+        rulesHeaderText2.setForeground(new java.awt.Color(102, 102, 102));
+        rulesHeaderText2.setText("2. Valid driver's license are an essential part of verifying a person's ability to operate a vehicle safely.");
+        pictureBox1.add(rulesHeaderText2);
+        rulesHeaderText2.setBounds(630, 230, 670, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -181,7 +212,7 @@ public class RegisterDocument extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pictureBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureBox2MouseClicked
+    private void uploadPictureBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadPictureBoxMouseClicked
         JFileChooser fileChooser = new JFileChooser();
         
         FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
@@ -195,34 +226,49 @@ public class RegisterDocument extends javax.swing.JPanel {
             if (imageFilter.accept(selectedFile)) {
                 displayImage(selectedFile);
                 if (imageName != null) {
-                    jTextField4.setText(imageName);
+                    try {
+                       disabledTextField.setText(imageName); 
+                       imageData = Files.readAllBytes(selectedFile.toPath());
+                    } catch (IOException ex) {
+                        Logger.getLogger(RegisterDocument.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Invalid Image Format!");
                 } 
             }
         }
-    }//GEN-LAST:event_pictureBox2MouseClicked
+    }//GEN-LAST:event_uploadPictureBoxMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
         Application.openRegistrationForm();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_skipButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.out.println("License: " + getLicenseNumber());
-        System.out.println("Date: " + getDateOfIssue());
-        System.out.println("Date: " + getDateOfExpiry());
-        Application.openSecurityQsnForm();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void continueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtonActionPerformed
+        if (licenseNumber.getText().isEmpty() || dateOfIssue.getText().isEmpty() || dateOfExpiry.getText().isEmpty()) {
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Please fill in all the fields!");
+            return;
+        } else if (licenseNumber.getText().length() != 16) {
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "License number must be 16 characters long!");
+            return;
+        } else if (!isValidDateFormat(dateOfIssue.getText()) || !isValidDateFormat(dateOfExpiry.getText())) {
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Invalid date format. Use YYYY-MM-DD!");
+            return;
+        } else {
+            SecurityQsnForm.registerDocument = this;
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "License details saved successfully. Proceed to the next step");
+            Application.openSecurityQsnForm();
+        }
+    }//GEN-LAST:event_continueButtonActionPerformed
     
     public void displayImage(File selectedFile) {
         try {
             BufferedImage img = ImageIO.read(selectedFile);
             ImageIcon icon = new ImageIcon(img);
-            pictureBox2.setImage(icon);
-            jLabel9.setText("");
-            pictureBox2.repaint();
+            uploadPictureBox.setImage(icon);
+            uploadText.setText("");
+            uploadPictureBox.repaint();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 
@@ -230,23 +276,23 @@ public class RegisterDocument extends javax.swing.JPanel {
         return selectedFile;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton continueButton;
     private javax.swing.JTextField dateOfExpiry;
     private javax.swing.JTextField dateOfIssue;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel descHeaderText;
+    private javax.swing.JTextField disabledTextField;
+    private javax.swing.JLabel expiryDateLabel;
+    private javax.swing.JLabel issuedDateLabel;
+    private javax.swing.JLabel licenseLabel;
     private javax.swing.JTextField licenseNumber;
     private app.vehicle.design.PanelRound panelRound1;
     private app.vehicle.design.PictureBox pictureBox1;
-    private app.vehicle.design.PictureBox pictureBox2;
+    private javax.swing.JLabel rulesHeaderText1;
+    private javax.swing.JLabel rulesHeaderText2;
+    private javax.swing.JLabel rulesHeaderText3;
+    private javax.swing.JButton skipButton;
+    private javax.swing.JLabel uploadLicenseHeaderText;
+    private app.vehicle.design.PictureBox uploadPictureBox;
+    private javax.swing.JLabel uploadText;
     // End of variables declaration//GEN-END:variables
 }

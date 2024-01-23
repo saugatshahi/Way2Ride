@@ -1,5 +1,6 @@
 package app.vehicle.menu;
 
+import app.vehicle.authentication.LoginForm;
 import app.vehicle.color.LightDarkMode;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.ui.FlatUIUtils;
@@ -17,12 +18,29 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import app.vehicle.color.ToolBarAccentColor;
+import app.vehicle.design.ImageAvatar;
+import app.vehicle.main.Application;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *@author shahi
 **/
 
 public class Menu extends JPanel {
+    
+    private File selectedFile;
+    private byte[] profileImage;
+    private String emailAddress;
+    public LoginForm loginForm;
 
     private final String menuItems[][] = {
         {"Home"},
@@ -39,13 +57,6 @@ public class Menu extends JPanel {
 
     public void setMenuFull(boolean menuFull) {
         this.menuFull = menuFull;
-        if (menuFull) {
-            header.setText(headerName);
-            header.setHorizontalAlignment(getComponentOrientation().isLeftToRight() ? JLabel.LEFT : JLabel.RIGHT);
-        } else {
-            header.setText("");
-            header.setHorizontalAlignment(JLabel.CENTER);
-        }
         for (Component com : panelMenu.getComponents()) {
             if (com instanceof MenuItem) {
                 ((MenuItem) com).setFull(menuFull);
@@ -57,8 +68,7 @@ public class Menu extends JPanel {
 
     private final List<MenuEvent> events = new ArrayList<>();
     private boolean menuFull = true;
-    private final String headerName = "";
-
+    
     protected final boolean hideMenuTitleOnMinimum = true;
     protected final int menuTitleLeftInset = 5;
     protected final int menuTitleVgap = 5;
@@ -68,6 +78,15 @@ public class Menu extends JPanel {
 
     public Menu() {
         init();
+        
+        loginForm = new LoginForm();
+        
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                changeProfilePicture();
+            }
+        });
     }
 
     private void init() {
@@ -76,12 +95,19 @@ public class Menu extends JPanel {
                 + "border:20,2,2,2;"
                 + "background:$Menu.background;"
                 + "arc:10");
-        header = new JLabel(headerName);
-        header.setIcon(new ImageIcon(getClass().getResource("/app/vehicle/logo/LogoOrange.png")));
+        
+        header = new ImageAvatar();
+        headerText = new JLabel();
+        
+        setDefaultProfilePicture();
+        
         header.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$Menu.header.font;"
                 + "foreground:$Menu.foreground");
-
+        
+        headerText.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$Menu.header.font;"
+                + "foreground:$Menu.foreground");
         //  Menu
         scroll = new JScrollPane();
         panelMenu = new JPanel(new MenuItemLayout(this));
@@ -101,10 +127,13 @@ public class Menu extends JPanel {
                 + "background:$Menu.ScrollBar.background;"
                 + "thumb:$Menu.ScrollBar.thumb");
         createMenu();
+        
         lightDarkMode = new LightDarkMode();
         toolBarAccentColor = new ToolBarAccentColor(this);
         toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
         add(header);
+        add(headerText);
+        System.out.println(headerText);
         add(scroll);
         add(lightDarkMode);
         add(toolBarAccentColor);
@@ -193,8 +222,69 @@ public class Menu extends JPanel {
     public int getMenuMinWidth() {
         return menuMinWidth;
     }
+    
+    public void displayImage(File selectedFile) {
+        try {
+            BufferedImage img = ImageIO.read(selectedFile);
+            ImageIcon icon = new ImageIcon(img);
+            header.setImage(icon);
+            header.repaint();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void setDefaultProfilePicture() {
+        ImageIcon defaultProfilePicture = new ImageIcon(getClass().getResource("/app/vehicle/logo/49578147-7ee7-443f-a2e1-8402e8f365ca.png/"));
+        header.setImage(defaultProfilePicture);
+        header.setBorderSize(3);
+        header.setBorderSpace(1);
+        header.setGradientColor1(Color.decode("#FFD700"));
+        header.setGradientColor2(Color.decode("#FF4700"));
+    }
+    
+    private void changeProfilePicture() {
+        JFileChooser fileChooser = new JFileChooser();
+        
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
+        fileChooser.setFileFilter(imageFilter);
+        
+        int result = fileChooser.showOpenDialog(this);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();
+            String imageName = selectedFile.getName();
+            
+            displayImage(selectedFile);
+            
+            if (imageName != null) {
+                try {
+                    profileImage = Files.readAllBytes(selectedFile.toPath());
+                    if (Application.performProfileUpdate(loginForm.getUserEntry(), profileImage)) {
+                        System.out.print("apple");
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    public File getSelectedFile() {
+        return selectedFile;
+    }
+    
+    public byte[] getProfileImage() {
+        return this.profileImage;
+    }
+    
+    public void setHeaderText(String emailAddress) {
+        this.emailAddress = emailAddress;
+        headerText.setText(emailAddress);
+    }
 
-    private JLabel header;
+    private ImageAvatar header;
+    private JLabel headerText;
     private JScrollPane scroll;
     private JPanel panelMenu;
     private LightDarkMode lightDarkMode;
@@ -231,11 +321,10 @@ public class Menu extends JPanel {
                 int x = insets.left;
                 int y = insets.top;
                 // gap changes the menuItems position as a whole
-                int gap = UIScale.scale(130);
+                int gap = UIScale.scale(140);
                 int sheaderFullHgap = UIScale.scale(headerFullHgap);
                 int width = parent.getWidth() - (insets.left + insets.right);
-                int height = parent.getHeight() - (insets.top + insets.bottom)- 10;
-                int iconWidth = width;
+                int height = parent.getHeight() - (insets.top + insets.bottom) - 10;
                 int iconHeight = header.getPreferredSize().height;
                 int hgap = menuFull ? sheaderFullHgap : 0;
                 int accentColorHeight = 0;
@@ -243,7 +332,8 @@ public class Menu extends JPanel {
                     accentColorHeight = toolBarAccentColor.getPreferredSize().height+gap;
                 }
 
-                header.setBounds(x + hgap, y, iconWidth - (hgap * 2), iconHeight);
+                header.setBounds(x + hgap + 18, y + 20, 68, 68);
+                headerText.setBounds(header.getX() + header.getWidth() + 30, header.getY(), 150, 30);
                 int ldgap = UIScale.scale(10);
                 int ldWidth = width - ldgap * 2;
                 int ldHeight = lightDarkMode.getPreferredSize().height;

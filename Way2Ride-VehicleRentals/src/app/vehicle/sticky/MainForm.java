@@ -25,6 +25,9 @@ import app.vehicle.form.RewardPoints;
 import app.vehicle.form.Settings;
 import app.vehicle.menu.Menu;
 import app.vehicle.menu.MenuAction;
+import java.awt.FontFormatException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *@author shahi
@@ -52,7 +55,6 @@ public class MainForm extends JLayeredPane {
         });
         initMenuEvent();
         setLayer(menuButton, JLayeredPane.POPUP_LAYER);
-//        add(menuButton);
         add(menu);
         add(panelBody);
     }
@@ -74,7 +76,14 @@ public class MainForm extends JLayeredPane {
     private void initMenuEvent() {
         menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             switch (index) {
-                case 0 -> Application.changeContentPane(new Dashboard());
+                case 0 -> {
+                    try {
+                        Application.changeContentPane(new Dashboard());
+                    } catch (FontFormatException ex) {
+                        Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
                 case 1 -> {
                     switch (subIndex) {
                         case 1 -> Application.changeContentPane(new TwoWheeler());

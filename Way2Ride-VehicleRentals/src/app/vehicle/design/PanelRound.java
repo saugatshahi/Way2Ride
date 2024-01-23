@@ -103,8 +103,7 @@ public class PanelRound extends JPanel{
    
     public PanelRound(){
         setOpaque(false);
-       
-       
+        setLayout(null);
     }
     @Override
     protected void paintComponent(Graphics grphcs) {

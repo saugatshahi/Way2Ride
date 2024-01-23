@@ -6,23 +6,23 @@ package app.vehicle.model;
  */
 public class Security {
     
-    private String SecurityAnswer1;
-    private String SecurityAnswer2;
-    private String SecurityAnswer3;
+    private String securityAnswer1;
+    private String securityAnswer2;
+    private String securityAnswer3;
     
-    public Security(String SecurityAnswer1, String SecurityAnswer2, String SecurityAnswer3) {
-        this.SecurityAnswer1 = SecurityAnswer1;
-        this.SecurityAnswer2 = SecurityAnswer2;
-        this.SecurityAnswer3 = SecurityAnswer3;
+    public Security(String securityAnswer1, String securityAnswer2, String securityAnswer3) {
+        this.securityAnswer1 = securityAnswer1;
+        this.securityAnswer2 = securityAnswer2;
+        this.securityAnswer3 = securityAnswer3;
     }
     
     public String getSecurityAnswer1() {
-        return this.SecurityAnswer1;
+        return this.securityAnswer1;
     }
     public String getSecurityAnswer2() {
-        return this.SecurityAnswer2;
+        return this.securityAnswer2;
     }
     public String getSecurityAnswer3() {
-        return this.SecurityAnswer3;
+        return this.securityAnswer3;
     }
 }

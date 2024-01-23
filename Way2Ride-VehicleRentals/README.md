@@ -46,3 +46,10 @@ menu.addMenuEvent(new MenuEvent() {
     }
 });
 ```
+# Admin Dashboard
+- Add vehicles
+- Remove vehicles
+- Add user
+- Remove user
+- Settings
+- Notification Preferences

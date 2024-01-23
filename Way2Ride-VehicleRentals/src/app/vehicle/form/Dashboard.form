@@ -73,7 +73,7 @@
                   <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="scroll" pref="418" max="32767" attributes="0"/>
+              <Component id="scroll" pref="588" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -222,6 +222,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Container class="app.vehicle.design.PanelItem" name="panelItem1">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
         </Container>
       </SubComponents>
     </Container>

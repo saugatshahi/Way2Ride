@@ -86,6 +86,8 @@ public class PaymentGateway extends javax.swing.JPanel {
 
         Desc.setText("We accept the card types shown above.");
 
+        shadowPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
         jLabel4.setText("Card Number");
 
         jLabel5.setText("Cardholder Name");

@@ -1,5 +1,5 @@
 
-package raven.modelItem;
+package app.vehicle.modelItem;
 
 
 import javax.swing.Icon;

@@ -17,9 +17,9 @@ import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import raven.glasspanepopup.DefaultOption;
 import raven.glasspanepopup.GlassPanePopup;
-import raven.modelItem.ModelItem;
+import app.vehicle.modelItem.ModelItem;
 
-public class Dashboard extends javax.swing.JPanel {
+public final class Dashboard extends javax.swing.JPanel {
        private List<ModelItem> itemList;
     
     private Notification notify;
@@ -32,11 +32,10 @@ public class Dashboard extends javax.swing.JPanel {
         // Add some sample items for testing
         
         for (int i = 0; i < 10; i++) {
-        addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
-        addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
-        addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
-        addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
-
+            addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
+            addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
+            addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
+            addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
         }
         
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
@@ -148,6 +147,8 @@ public class Dashboard extends javax.swing.JPanel {
 
         scroll.setBorder(null);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelItem1.setOpaque(false);
         scroll.setViewportView(panelItem1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -201,7 +202,7 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

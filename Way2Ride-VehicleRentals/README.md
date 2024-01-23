@@ -5,13 +5,16 @@
 - Appealing UI/UX
 This dashboard build by using java swing with flatlaf look and feel
 
-### Library use
+### Library used
 - flatlaf-3.2.jar
 - flatlaf-extras-3.2.jar
 - jsvg-1.2.0.jar
 - flatlaf-fonts-roboto-2.137.jar
 - swing-toast-notifications-1.0.1.jar
-
+- TimingFramework-0.55
+- glasspane-popup-2.0.1
+- mysql-connector-j-8.2.0
+  
 ### Sample code to show form
 ``` java
 //  Application class from package raven.application

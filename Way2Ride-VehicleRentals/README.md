@@ -1,4 +1,8 @@
-# Java Dashboard Light and Dark mode
+# Way2Ride Vehicle Rental Application
+- Light and Dark Theme
+- Easy to use
+- 0.55s runtime
+- Appealing UI/UX
 This dashboard build by using java swing with flatlaf look and feel
 
 ### Library use

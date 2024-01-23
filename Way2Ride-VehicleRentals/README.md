@@ -4,7 +4,7 @@
 - 0.55s runtime
 - Appealing UI/UX
   
-This dashboard build by using java swing with flatlaf look and feel
+Java Swing along with FlatLaf look and feel
 
 ### Library used
 - flatlaf-3.2.jar

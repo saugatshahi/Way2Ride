@@ -3,6 +3,7 @@
 - Easy to use
 - 0.55s runtime
 - Appealing UI/UX
+  
 This dashboard build by using java swing with flatlaf look and feel
 
 ### Library used

@@ -1,7 +1,7 @@
 # Way2Ride Vehicle Rental
 
 <p align="center">
-  <img src="C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/dashboard/png/logo.png" alt="Way2Ride Logo" width="300" />
+  <img src="src/app/dashboard/png/logo.png" alt="Way2Ride Logo" width="300" />
 </p>
 
 Way2Ride Vehicle Rental is a sophisticated platform designed to redefine the vehicle rental experience. From seamless user authentication to advanced booking management, our application offers a feature-rich solution for both users and administrators.

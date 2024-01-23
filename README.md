@@ -6,10 +6,10 @@ Way2Ride Vehicle Rental is a [brief description of your project, e.g., web appli
 
 ## Table of Contents
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- Features
+- Getting started
+- Prerequisites
+- Installation
+- Usage
+- Contributing
+- License

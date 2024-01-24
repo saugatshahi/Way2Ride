@@ -1,55 +1,65 @@
 
 package app.vehicle.component;
 
-//import app.vehicle.form.CarDetails;
+import app.vehicle.dao.CategoryDAO;
 import app.vehicle.form.CarDetails;
 import app.vehicle.form.PaymentGateway;
+import app.vehicle.model.CategoryModel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import app.vehicle.modelItem.ModelItem;
+import raven.toast.Notifications;
 
 
 
 public class CarItem extends javax.swing.JPanel {
+    
     private PaymentGateway paymentGatewayPanel;
     private JDialog paymentDialog;  
     private CarDetails carDetailsPanel;
-    
-//    private CarDetails carDetailsPanel;
     private JDialog carDetailsDialog;
 
-    /**
-     * @return the selected
-     */
     public boolean isSelected() {
         return selected;
     }
-
-    /**
-     * @param selected the selected to set
-     */
+    
     public void setSelected(boolean selected) {
         this.selected = selected;
         repaint();
     }
     
-    
-    
     private boolean selected;
-    public CarItem() {
+    
+    public CarItem(String category, String features, String brand, String powerSource, String limitations, String price, String quantity, byte[] carImage) {
+        
         initComponents();
+        
+        lbcarCategory.setText(category);
+        lbcarFeatures.setText(features);
+        lbcarMilage.setText(limitations);
+        lbcarPrice.setText(price);
+        lbcarSeats.setText(quantity);
+        lbcarName.setText(brand);
+        if (carImage != null) {
+            pic.setImage(byteArrayToImageIcon(carImage));
+        }
+        
         paymentGatewayPanel = new PaymentGateway();
 
-        // Create the dialog to hold the PaymentGateway panel
         paymentDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Payment Details", true);
         paymentDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
         paymentDialog.getContentPane().add(paymentGatewayPanel);
@@ -80,29 +90,10 @@ public class CarItem extends javax.swing.JPanel {
             lbcarCategory.setFont(sizedFont2);
             Font sizedFont3 = customFont.deriveFont(Font.BOLD,(float) 16);
             lbcarPrice.setFont(sizedFont3);
-//            lbreserveDetails.setFont(sizedFont3);
         } catch (IOException | FontFormatException e) {
             System.out.println(e);
         }
         setOpaque(false);
-    }
-    private ModelItem data;
-    public void setData(ModelItem data){
-        this.data = data;
-
-        pic.setImage(data.getImage1());
-        lbcarType.setText(data.getCarType());
-        lbcarCategory.setText(data.getCarCategory());
-        lbcarFeatures.setText(data.getCarFeatures());
-        lbcarMilage.setText(data.getCarMilage());
-        lbcarPrice.setText(data.getCarPrice());
-        lbcarSeats.setText(data.getCarSeats());
-        lbcarName.setText(data.getCarName());
-        
-        
-        
-        
-        
     }
 
     @Override
@@ -119,6 +110,17 @@ public class CarItem extends javax.swing.JPanel {
         g2.dispose();
         super.paint(grphcs);
     }
+  
+    private ImageIcon byteArrayToImageIcon(byte[] byteArray) {
+    try {
+        ByteArrayInputStream bis = new ByteArrayInputStream(byteArray);
+        BufferedImage image = ImageIO.read(bis);
+        return new ImageIcon(image); // Adjust width and height as needed
+    } catch (IOException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -182,11 +184,11 @@ public class CarItem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(lbcarPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(31, 31, 31)
+                .addGap(38, 38, 38)
                 .addComponent(lbreserveDetails)
-                .addGap(16, 16, 16))
+                .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -201,81 +203,95 @@ public class CarItem extends javax.swing.JPanel {
                         .addComponent(lbcarSeats)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(lbcarCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58))
+                        .addGap(38, 38, 38))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbcarMilage)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbcarType, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbcarName)
                     .addComponent(lbcarFeatures))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(lbcarType)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbcarName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbcarFeatures)
+                        .addGap(4, 4, 4)
+                        .addComponent(lbcarType)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbcarName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbcarSeats)
-                                .addComponent(pictureBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbcarCategory, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pictureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbcarMilage))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbreserveDetails)
-                    .addComponent(lbcarPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbcarFeatures)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbcarSeats)
+                                            .addComponent(pictureBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbcarCategory))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pictureBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbcarMilage))
+                        .addGap(0, 56, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbreserveDetails)
+                            .addComponent(lbcarPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbreserveDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbreserveDetailsActionPerformed
-        // TODO add your handling code here:
-        
-                showPaymentDialog();
+        showPaymentDialog();
     }//GEN-LAST:event_lbreserveDetailsActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-//        showCarDetailsDialog();
+        CategoryDAO categoryDAO = new CategoryDAO();
+        List<CategoryModel> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+        
+        for (CategoryModel categoryData : categoryVehicle) {
+            if (categoryData.getBrand().equals("Pagani")) {
+                showCarDetailsDialog();
+            } else {
+                Notifications.getInstance().show(Notifications.Type.INFO, "Nothing to show!");
+            }
+        }
     }//GEN-LAST:event_formMouseClicked
- private void showPaymentDialog() {
+    private void showPaymentDialog() {
+        int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - paymentDialog.getWidth() / 2);
+        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - paymentDialog.getHeight() / 2);
+
+        paymentDialog.setLocation(centerX, centerY);
+        
+        paymentDialog.setVisible(true);
+    }
+    
+    private void showCarDetailsDialog() {
        int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - paymentDialog.getWidth() / 2);
         int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - paymentDialog.getHeight() / 2);
 
-        // Set the location of the dialog
-        paymentDialog.setLocation(centerX, centerY);
+        carDetailsDialog.setLocation(centerX, centerY);
 
-
-        paymentDialog.setVisible(true);
-       
+        carDetailsDialog.setVisible(true);
     }
-//         private void showCarDetailsDialog() {
-//       int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - paymentDialog.getWidth() / 2);
-//        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - paymentDialog.getHeight() / 2);
-//
-//        // Set the location of the dialog
-//        carDetailsDialog.setLocation(centerX, centerY);
-//
-//        // Make the dialog visible
-//        carDetailsDialog.setVisible(true);
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lbcarCategory;
     private javax.swing.JLabel lbcarFeatures;

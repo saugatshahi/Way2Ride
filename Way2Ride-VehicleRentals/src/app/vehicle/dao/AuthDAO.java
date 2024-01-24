@@ -3,14 +3,11 @@ package app.vehicle.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import app.vehicle.model.AdmiNotification;
 import app.vehicle.database.MySqlConnection;
 import app.vehicle.model.Customer;
 import app.vehicle.model.License;
 import app.vehicle.model.Security;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 
@@ -95,32 +92,6 @@ public class AuthDAO extends MySqlConnection {
         INVALID_PASSWORD,
         USER_NOT_FOUND,
         ERROR
-    }
-
-    public List<AdmiNotification> fetchAllNotificationsInDescendingOrder() {
-        List<AdmiNotification> notificationList = new ArrayList<>();
-
-        try (Connection conn = openConnection()) {
-            String selectQuery = "SELECT DescriptionNote FROM notification_store " +
-                    "WHERE NotifyId IS NOT NULL " +
-                    "ORDER BY NotifyId DESC";
-
-            try (PreparedStatement ps = conn.prepareStatement(selectQuery)) {
-                try (ResultSet resultSet = ps.executeQuery()) {
-                    while (resultSet.next()) {
-                        AdmiNotification notificationData = new AdmiNotification();
-                        notificationData.setDescription(resultSet.getString("DescriptionNote"));
-
-                        notificationList.add(notificationData);
-                    }
-                }
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-        return notificationList;
     }
     
     public boolean updateProfilePicture(String emailAddress, byte[] newProfilePicture) {

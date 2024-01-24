@@ -77,12 +77,9 @@ public class MainForm extends JLayeredPane {
         menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             switch (index) {
                 case 0 -> {
-                    try {
-                        Application.changeContentPane(new Dashboard());
-                    } catch (FontFormatException ex) {
-                        Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    Application.changeContentPane(new Dashboard());
                 }
+
 
                 case 1 -> {
                     switch (subIndex) {

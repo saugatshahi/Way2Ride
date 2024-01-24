@@ -1,6 +1,7 @@
 package app.vehicle.form;
 
 import app.vehicle.dao.AuthDAO;
+import app.vehicle.dao.NotificationDAO;
 import app.vehicle.design.ModernScrollBarUI;
 import app.vehicle.model.AdmiNotification;
 import java.awt.Color;
@@ -44,9 +45,9 @@ public class Notification extends javax.swing.JPanel {
     }
     
     private void loadNoti() {
-    AuthDAO authDAO = new AuthDAO();
+    NotificationDAO notifyDAO = new NotificationDAO();
     
-    List<AdmiNotification> notificationList = authDAO.fetchAllNotificationsInDescendingOrder();
+    List<AdmiNotification> notificationList = notifyDAO.fetchAllNotificationsInDescendingOrder();
 
     // Assuming NotificationItem constructor takes parameters for username, description, and timestamp
     for (AdmiNotification notificationData : notificationList) {

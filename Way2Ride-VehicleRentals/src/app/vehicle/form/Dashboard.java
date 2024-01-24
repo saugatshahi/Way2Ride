@@ -2,64 +2,28 @@ package app.vehicle.form;
 
 import app.admin.menu.ScrollBar;
 import app.vehicle.component.CarItem;
+import app.vehicle.dao.CategoryDAO;
+import app.vehicle.model.CategoryModel;
 import com.formdev.flatlaf.FlatClientProperties;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
+import java.awt.Component;
 import raven.glasspanepopup.DefaultOption;
 import raven.glasspanepopup.GlassPanePopup;
-import app.vehicle.modelItem.ModelItem;
 
 public final class Dashboard extends javax.swing.JPanel {
-       private List<ModelItem> itemList;
-       private CarDetails carDetailsPanel;
     
     private Notification notify;
-                private ModelItem[][] modelItems  = {
-    {new ModelItem("Luxury", "Features", "Bugatti", "Non-Electric", "Unlimited", "NRS.29,000", "2",
-            new ImageIcon(getClass().getResource("/app/dashboard/png/img1bg.png")), new JButton("Reserve"))},
-            
-    {new ModelItem("Standard", "Features", "Tesla", "Electric", "Unlimited", "NRS.22,000", "5",
-            new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla.png")), new JButton("Reserve"))},
-            
-    {new ModelItem("Standard", "Features", "Jeep", "Non-Electric", "Unlimited", "NRS.25,000", "5",
-            new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep.png")), new JButton("Reserve"))},
-            
-    {new ModelItem("Luxury", "Features", "Car", "Non-Electric", "Unlimited", "NRS.20,000", "5",
-            new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar.png")), new JButton("Reserve"))}
-};
+    
 
-    public Dashboard() throws FontFormatException {
+    public Dashboard() {
         initComponents();
-         scroll.setVerticalScrollBar(new ScrollBar());
-        itemList = new ArrayList<>(); // Initialize the list
-           carDetailsPanel = new CarDetails();
+        scroll.setVerticalScrollBar(new ScrollBar());
 
- for (ModelItem[] modelItemArray : modelItems) {
-    for (ModelItem modelItem : modelItemArray) {
-        addItem(modelItem);
-    }
-}
- 
-        
-        // Add some sample items for testing
-        
-//        for (int i = 0; i < 10; i++) {
-//            addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
-//            addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
-//            addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
-//            addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
-//        }
-        
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(fontFilePath));
@@ -72,29 +36,20 @@ public final class Dashboard extends javax.swing.JPanel {
         } catch (IOException | FontFormatException e) {
             System.out.println(e);
         }
+        
+        addCategory();
     }
-    public void addItem(ModelItem data){
-        CarItem caritem = new CarItem();
-        caritem.setData(data);
-        caritem.addMouseListener(new MouseAdapter(){
-        @Override
-        public void mousePressed(MouseEvent me) {
-            if(SwingUtilities.isLeftMouseButton(me)){
-                 showCarDetailsPanel(data);
-                 
-            }
-        }
-         });
-        panelItem1.add(caritem);
-        panelItem1.repaint();
-        panelItem1.revalidate();
+     
+    private void addCategory() {
+    CategoryDAO categoryDAO = new CategoryDAO();
+    List<CategoryModel> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+
+    for (CategoryModel categoryData : categoryVehicle) {
+        panelItem1.add(new CarItem(categoryData.getCategory(), categoryData.getFeatures(), categoryData.getBrand(),
+                       categoryData.getPowerSource(), categoryData.getLimitations(), 
+                       categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
     }
-      public void printLoopData() {
-        System.out.println("Loop Data:");
-        for (ModelItem item : itemList) {
-            System.out.println(item);
-        }
-    }
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,7 +144,7 @@ public final class Dashboard extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -246,32 +201,6 @@ public final class Dashboard extends javax.swing.JPanel {
             }
         });
     }//GEN-LAST:event_jLabel3MouseClicked
-private void showCarDetailsPanel(ModelItem modelItem ) {
-        // You need to implement a method to show the CarDetails panel
-        // and set its visibility to true. This can be done similar to
-        // how you showed the Notification panel in your existing code.
-        // The specific implementation depends on your requirements.
-
-        // Example:
-        GlassPanePopup.showPopup(carDetailsPanel, new DefaultOption() {
-            @Override
-            public float opacity() {
-                return 0.03f;
-            }
-
-            @Override
-            public String getLayout(Component parent, float animate) {
-                float xOffset = 0.5f;  // Set the desired x-offset
-                float yOffset = 0.5f;  // Set the desired y-offset
-
-                return "pos " + xOffset + "al " + yOffset + "al";
-            }
-        });
-
-
-        // Update the CarDetails panel with the clicked ModelDesc
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -1,13 +1,5 @@
 package app.vehicle.form;
 
-import app.vehicle.component.CarItem;
-import app.vehicle.modelItem.ModelItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
-
 /**
  *
  * @author Raven
@@ -17,31 +9,31 @@ public final class FourWheeler extends javax.swing.JPanel {
     public FourWheeler() {
         initComponents();
         
-        for (int i = 0; i < 10; i++) {
-            addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
-            addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
-            addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
-            addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
-        }
+//        for (int i = 0; i < 10; i++) {
+//            addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
+//            addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
+//            addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
+//            addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
+//        }
     }
 
     @SuppressWarnings("unchecked")
     
-    public void addItem(ModelItem data){
-        CarItem caritem = new CarItem();
-        caritem.setData(data);
-        caritem.addMouseListener(new MouseAdapter(){
-        @Override
-        public void mousePressed(MouseEvent me) {
-            if(SwingUtilities.isLeftMouseButton(me)){
-                
-            }
-        }
-         });
-        panelItem1.add(caritem);
-        panelItem1.repaint();
-        panelItem1.revalidate();
-    }
+//    public void addItem(ModelItem data){
+////        CarItem caritem = new CarItem();
+//        caritem.setData(data);
+//        caritem.addMouseListener(new MouseAdapter(){
+//        @Override
+//        public void mousePressed(MouseEvent me) {
+//            if(SwingUtilities.isLeftMouseButton(me)){
+//                
+//            }
+//        }
+//         });
+//        panelItem1.add(caritem);
+//        panelItem1.repaint();
+//        panelItem1.revalidate();
+//    }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -3,7 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/design/RippleEffect.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/component/CarItem.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/HelpSupport.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/FourWheeler.java</file>
@@ -12,29 +12,7 @@
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/modelItem/ModelItem.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/database/MySqlConnection.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/PaymentGateway.java</file>
-=======
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/Vector%20(3).png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/main/Application.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/design/PanelItem.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/form/CarDetails.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/Group.png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/component/CarItem.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/component/CarDesc.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/form/HelpSupport.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/form/Dashboard.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/database/MySqlConnection.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/design/WrapLayout.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/Jeep1.png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/form/PaymentGateway.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/Tesla1.png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/buggati1.png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/Uniquecar1.png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/design/RippleEffect.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/vehicle/form/FourWheeler.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/admin/menu/AdminItem.java</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/Clip%20path%20group.png</file>
-            <file>file:/D:/projectled/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/logo.png</file>
->>>>>>> 0dd42162697e97485b5530085acf8e42bd489e6d
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/RewardPoints.java</file>
         </group>
     </open-files>
 </project-private>

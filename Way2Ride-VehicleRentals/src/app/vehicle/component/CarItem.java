@@ -2,6 +2,7 @@
 package app.vehicle.component;
 
 //import app.vehicle.form.CarDetails;
+import app.vehicle.form.CarDetails;
 import app.vehicle.form.PaymentGateway;
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +21,8 @@ import app.vehicle.modelItem.ModelItem;
 
 public class CarItem extends javax.swing.JPanel {
     private PaymentGateway paymentGatewayPanel;
-    private JDialog paymentDialog;
+    private JDialog paymentDialog;  
+    private CarDetails carDetailsPanel;
     
 //    private CarDetails carDetailsPanel;
     private JDialog carDetailsDialog;
@@ -54,12 +56,12 @@ public class CarItem extends javax.swing.JPanel {
         paymentDialog.pack();
         
         
-//        carDetailsPanel = new CarDetails();
-//        carDetailsDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Car Details", true);
-//        carDetailsDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-//        carDetailsDialog.getContentPane().add(carDetailsPanel);
-//        carDetailsDialog.pack();
-//        
+        carDetailsPanel = new CarDetails();
+        carDetailsDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Car Details", true);
+        carDetailsDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        carDetailsDialog.getContentPane().add(carDetailsPanel);
+        carDetailsDialog.pack();
+        
         
         
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
@@ -250,7 +252,7 @@ public class CarItem extends javax.swing.JPanel {
     }//GEN-LAST:event_lbreserveDetailsActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        showCarDetailsDialog();
+//        showCarDetailsDialog();
     }//GEN-LAST:event_formMouseClicked
  private void showPaymentDialog() {
        int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - paymentDialog.getWidth() / 2);
@@ -261,17 +263,18 @@ public class CarItem extends javax.swing.JPanel {
 
 
         paymentDialog.setVisible(true);
+       
     }
-         private void showCarDetailsDialog() {
-       int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - paymentDialog.getWidth() / 2);
-        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - paymentDialog.getHeight() / 2);
-
-        // Set the location of the dialog
-        carDetailsDialog.setLocation(centerX, centerY);
-
-        // Make the dialog visible
-        carDetailsDialog.setVisible(true);
-    }
+//         private void showCarDetailsDialog() {
+//       int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - paymentDialog.getWidth() / 2);
+//        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - paymentDialog.getHeight() / 2);
+//
+//        // Set the location of the dialog
+//        carDetailsDialog.setLocation(centerX, centerY);
+//
+//        // Make the dialog visible
+//        carDetailsDialog.setVisible(true);
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lbcarCategory;

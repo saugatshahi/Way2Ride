@@ -21,22 +21,44 @@ import app.vehicle.modelItem.ModelItem;
 
 public final class Dashboard extends javax.swing.JPanel {
        private List<ModelItem> itemList;
+       private CarDetails carDetailsPanel;
     
     private Notification notify;
+                private ModelItem[][] modelItems  = {
+    {new ModelItem("Luxury", "Features", "Bugatti", "Non-Electric", "Unlimited", "NRS.29,000", "2",
+            new ImageIcon(getClass().getResource("/app/dashboard/png/img1bg.png")), new JButton("Reserve"))},
+            
+    {new ModelItem("Standard", "Features", "Tesla", "Electric", "Unlimited", "NRS.22,000", "5",
+            new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla.png")), new JButton("Reserve"))},
+            
+    {new ModelItem("Standard", "Features", "Jeep", "Non-Electric", "Unlimited", "NRS.25,000", "5",
+            new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep.png")), new JButton("Reserve"))},
+            
+    {new ModelItem("Luxury", "Features", "Car", "Non-Electric", "Unlimited", "NRS.20,000", "5",
+            new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar.png")), new JButton("Reserve"))}
+};
 
     public Dashboard() throws FontFormatException {
         initComponents();
          scroll.setVerticalScrollBar(new ScrollBar());
         itemList = new ArrayList<>(); // Initialize the list
+           carDetailsPanel = new CarDetails();
+
+ for (ModelItem[] modelItemArray : modelItems) {
+    for (ModelItem modelItem : modelItemArray) {
+        addItem(modelItem);
+    }
+}
+ 
         
         // Add some sample items for testing
         
-        for (int i = 0; i < 10; i++) {
-            addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
-            addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
-            addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
-            addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
-        }
+//        for (int i = 0; i < 10; i++) {
+//            addItem(new ModelItem("Luxury","Features","Buggati","Non-Elecrtric","Unlimited","NRS.29,000","2",new ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png")),new JButton("Reserve")));
+//            addItem(new ModelItem("Standard","Features","Tesla","Elecrtric","Unlimited","NRS.22,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png")),new JButton("Reserve")));
+//            addItem(new ModelItem("Standard","Features","Jeep","Non-Elecrtric","Unlimited","NRS.25,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Jeep1.png")),new JButton("Reserve")));
+//            addItem(new ModelItem("Luxury","Features","Car","Non-Elecrtric","Unlimited","NRS.20,000","5",new ImageIcon(getClass().getResource("/app/dashboard/png/Uniquecar1.png")),new JButton("Reserve")));
+//        }
         
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
         try {
@@ -58,7 +80,8 @@ public final class Dashboard extends javax.swing.JPanel {
         @Override
         public void mousePressed(MouseEvent me) {
             if(SwingUtilities.isLeftMouseButton(me)){
-                
+                 showCarDetailsPanel(data);
+                 
             }
         }
          });
@@ -223,6 +246,31 @@ public final class Dashboard extends javax.swing.JPanel {
             }
         });
     }//GEN-LAST:event_jLabel3MouseClicked
+private void showCarDetailsPanel(ModelItem modelItem ) {
+        // You need to implement a method to show the CarDetails panel
+        // and set its visibility to true. This can be done similar to
+        // how you showed the Notification panel in your existing code.
+        // The specific implementation depends on your requirements.
+
+        // Example:
+        GlassPanePopup.showPopup(carDetailsPanel, new DefaultOption() {
+            @Override
+            public float opacity() {
+                return 0.03f;
+            }
+
+            @Override
+            public String getLayout(Component parent, float animate) {
+                float xOffset = 0.5f;  // Set the desired x-offset
+                float yOffset = 0.5f;  // Set the desired y-offset
+
+                return "pos " + xOffset + "al " + yOffset + "al";
+            }
+        });
+
+
+        // Update the CarDetails panel with the clicked ModelDesc
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

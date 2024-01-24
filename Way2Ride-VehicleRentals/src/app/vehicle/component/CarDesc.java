@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import raven.modelItem.ModelDesc;
 
 /**
  *
@@ -32,13 +33,33 @@ public class CarDesc extends javax.swing.JPanel {
     public CarDesc() {
         initComponents();
     }
+private ModelDesc data1;
+        public void setData1(ModelDesc data1){
+        this.data1 = data1;
 
+          CarPic.setImage(data1.getImage2());
+          CarName1.setText(data1.getCarName1());
+          CarDesc1.setDocument(data1.getCarDesc().getDocument());
+          Dimension.setText(data1.getDimension());
+          DimensionDesc.setDocument(data1.getDimensionDesc().getDocument());
+          Performance.setText(data1.getPerformance());
+          PerformanceDesc.setDocument(data1.getPerformanceDesc().getDocument());
+          Engine.setText(data1.getEngine());
+          EngineDesc.setDocument(data1.getEngineDesc().getDocument());
+
+
+          
+          
+
+
+        }
+  
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pictureBox1 = new app.vehicle.design.PictureBox();
+        CarPic = new app.vehicle.design.PictureBox();
         CarName1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CarDesc1 = new javax.swing.JTextArea();
@@ -52,7 +73,7 @@ public class CarDesc extends javax.swing.JPanel {
         Performance = new javax.swing.JLabel();
         Dimension = new javax.swing.JLabel();
 
-        pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/img1bg.png"))); // NOI18N
+        CarPic.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/img1bg.png"))); // NOI18N
 
         CarName1.setText("Buggati Veyron");
 
@@ -94,7 +115,7 @@ public class CarDesc extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CarPic, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CarName1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +147,7 @@ public class CarDesc extends javax.swing.JPanel {
                         .addComponent(CarName1)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CarPic, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Engine, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,6 +186,7 @@ public class CarDesc extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea CarDesc1;
     private javax.swing.JLabel CarName1;
+    private app.vehicle.design.PictureBox CarPic;
     private javax.swing.JLabel Dimension;
     private javax.swing.JTextArea DimensionDesc;
     private javax.swing.JLabel Engine;
@@ -175,6 +197,5 @@ public class CarDesc extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private app.vehicle.design.PictureBox pictureBox1;
     // End of variables declaration//GEN-END:variables
 }

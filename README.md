@@ -10,7 +10,7 @@ Way2Ride Vehicle Rental is a sophisticated platform designed to redefine the veh
 - **Payment Integration:** Multiple payment gateways for a seamless and secure transaction experience.
 - **Responsive Design:** A visually appealing and responsive UI for a consistent experience across devices.
 - **Admin Dashboard:** An intuitive dashboard for administrators to manage users, bookings, and vehicle listings.
-- **Feedback & Support
+- **Feedback & Support:**
   
 ## Vehicle Categories
 

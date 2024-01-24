@@ -1,9 +1,5 @@
 # Way2Ride Vehicle Rental
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/saugatshahi/Way2Ride/Way2Ride-VehicleRentals/src/app/dashboard/png/logo.png" alt="Way2Ride Logo" width="300" />
-</p>
-
 Way2Ride Vehicle Rental is a sophisticated platform designed to redefine the vehicle rental experience. From seamless user authentication to advanced booking management, our application offers a feature-rich solution for both users and administrators.
 
 ## Features
@@ -21,6 +17,8 @@ Way2Ride Vehicle Rental is a sophisticated platform designed to redefine the veh
 - Payment Gateway
 - CarDescription Panel
 - ModelDescription Class
+- Car details Panel
+  
 
 ## Getting Started
 

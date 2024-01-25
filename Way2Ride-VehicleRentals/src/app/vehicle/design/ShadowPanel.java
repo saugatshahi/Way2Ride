@@ -16,8 +16,7 @@ public class ShadowPanel extends JPanel {
     private final PanelRound roundPanel;  // Instance of PanelRound
 
     public ShadowPanel() {
-        setOpaque(false);
-        setBackground(Color.BLACK);
+        setOpaque(true);
         roundPanel = new PanelRound();
         roundPanel.setOpaque(false);
         roundPanel.setRoundTopLeft(20);

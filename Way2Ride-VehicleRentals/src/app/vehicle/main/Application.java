@@ -38,7 +38,7 @@ public class Application extends javax.swing.JFrame {
     private final RegisterCustomer registerCustomer;
     private final RegisterDocument registerDocument;
     private final SecurityQsnForm securityQsn;
-    private Menu menu;
+    private final Menu menu;
 
     public Application() {
         initComponents();
@@ -51,7 +51,7 @@ public class Application extends javax.swing.JFrame {
         securityQsn = new SecurityQsnForm();
         menu = new Menu();
         
-        setContentPane(mainForm);
+        setContentPane(loginForm);
         Notifications.getInstance().setJFrame(this);
         GlassPanePopup.install(this);
     }
@@ -151,7 +151,7 @@ public class Application extends javax.swing.JFrame {
         switch (loginStatus) {
             case SUCCESS -> {
                 Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Successfully logged in");
-                application.menu.setHeaderText(emailAddress);
+//                application.menu.setHeaderText(emailAddress);
                 return true;
             }
             case INVALID_PASSWORD -> JOptionPane.showMessageDialog(null, "Invalid password. Please try again.");
@@ -176,6 +176,7 @@ public class Application extends javax.swing.JFrame {
     private void initComponents() {
 
         menu1 = new app.vehicle.menu.Menu();
+        dashboard1 = new app.vehicle.form.Dashboard();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -188,11 +189,17 @@ public class Application extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(dashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,6 +219,7 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private app.vehicle.form.Dashboard dashboard1;
     private app.vehicle.menu.Menu menu1;
     // End of variables declaration//GEN-END:variables
 }

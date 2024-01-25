@@ -1,6 +1,5 @@
 package app.vehicle.form;
 
-import app.vehicle.dao.AuthDAO;
 import app.vehicle.dao.NotificationDAO;
 import app.vehicle.design.ModernScrollBarUI;
 import app.vehicle.model.AdmiNotification;
@@ -34,8 +33,8 @@ public class Notification extends javax.swing.JPanel {
         jScrollPane1.setViewportBorder(null);
         JScrollBar sb = jScrollPane1.getVerticalScrollBar();
         sb.setOpaque(false);
-        sb.setForeground(Color.red);
-        sb.setPreferredSize(new Dimension(8, 18));
+        sb.setForeground(Color.decode("#FF5C00"));
+        sb.setPreferredSize(new Dimension(4, 100));
         sb.setUI(new ModernScrollBarUI());
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setViewportBorder(null);
@@ -48,10 +47,9 @@ public class Notification extends javax.swing.JPanel {
     NotificationDAO notifyDAO = new NotificationDAO();
     
     List<AdmiNotification> notificationList = notifyDAO.fetchAllNotificationsInDescendingOrder();
-
-    // Assuming NotificationItem constructor takes parameters for username, description, and timestamp
+    
     for (AdmiNotification notificationData : notificationList) {
-        jPanel1.add(new NotificationItem("Admin", notificationData.getDescription(), "2 days ago", new ImageIcon(getClass().getResource("/app/vehicle/logo/upload.png/"))));
+        jPanel1.add(new NotificationItem("Admin", notificationData.getDescription(), "2 days ago", new ImageIcon(getClass().getResource("/app/dashboard/png/pexels-marcelo-dias-2010877.jpg/"))));
     }
 }
 
@@ -86,7 +84,7 @@ public class Notification extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(237, 237, 237));
+        setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 10, 10, 10));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -98,7 +96,7 @@ public class Notification extends javax.swing.JPanel {
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel1.setBackground(new java.awt.Color(237, 237, 237));
+        jPanel1.setBackground(new java.awt.Color(248, 248, 248));
         jPanel1.setOpaque(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -114,6 +112,8 @@ public class Notification extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(jPanel1);
 
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 92, 0));
         jButton1.setText("Mark as read");
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -127,23 +127,27 @@ public class Notification extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1))
         );
     }// </editor-fold>//GEN-END:initComponents

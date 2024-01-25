@@ -25,9 +25,6 @@ import app.vehicle.form.RewardPoints;
 import app.vehicle.form.Settings;
 import app.vehicle.menu.Menu;
 import app.vehicle.menu.MenuAction;
-import java.awt.FontFormatException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *@author shahi

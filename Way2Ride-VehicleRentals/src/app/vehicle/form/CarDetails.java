@@ -41,13 +41,13 @@ public class CarDetails extends javax.swing.JPanel {
 //            modelItems[0][0].getImage1()));  // Replace with the actual getter method for ImageIcon
 //    }
 //}
-
-//        if(dashboard.getModelItems())
-        addDesc(new ModelDesc("Luxury", "Features", "Bugatti", "Non-Electric",
-        new JTextArea("this is Text1"), new JTextArea("This is Text2"), new JTextArea("This is text 3"),
-        new JTextArea("Text4"), new ImageIcon(ModelDesc.class.getResource("/app/dashboard/png/img1bg.png"))));
-
-        
+//
+////        if(dashboard.getModelItems())
+//        addDesc(new ModelDesc("Luxury", "Features", "Bugatti", "Non-Electric",
+//        new JTextArea("this is Text1"), new JTextArea("This is Text2"), new JTextArea("This is text 3"),
+//        new JTextArea("Text4"), new ImageIcon(ModelDesc.class.getResource("/app/dashboard/png/img1bg.png"))));
+//
+//        
     }
      public void addDesc(ModelDesc data1){
         CarDesc carDesc = new CarDesc();

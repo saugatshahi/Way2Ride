@@ -39,7 +39,7 @@ public class Menu extends JPanel {
     
     private File selectedFile;
     private byte[] profileImage;
-    private String emailAddress;
+//    private String emailAddress;
     public LoginForm loginForm;
 
     private final String menuItems[][] = {
@@ -78,15 +78,43 @@ public class Menu extends JPanel {
 
     public Menu() {
         init();
-        
-        loginForm = new LoginForm();
-        
         header.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 changeProfilePicture();
             }
         });
+    }
+    
+    public byte[] getProfileImage() {
+        return this.profileImage;
+    }
+    
+    private void changeProfilePicture() {
+        JFileChooser fileChooser = new JFileChooser();
+        
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
+        fileChooser.setFileFilter(imageFilter);
+        
+        int result = fileChooser.showOpenDialog(this);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();
+            String imageName = selectedFile.getName();
+            
+            displayImage(selectedFile);
+            
+            if (imageName != null) {
+                try {
+                    profileImage = Files.readAllBytes(selectedFile.toPath());
+                    if (Application.performProfileUpdate(loginForm.getUserEntry(), profileImage)) {
+                        System.out.print("apple");
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
     private void init() {
@@ -243,44 +271,8 @@ public class Menu extends JPanel {
         header.setGradientColor2(Color.decode("#FF4700"));
     }
     
-    private void changeProfilePicture() {
-        JFileChooser fileChooser = new JFileChooser();
-        
-        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
-        fileChooser.setFileFilter(imageFilter);
-        
-        int result = fileChooser.showOpenDialog(this);
-        
-        if (result == JFileChooser.APPROVE_OPTION) {
-            selectedFile = fileChooser.getSelectedFile();
-            String imageName = selectedFile.getName();
-            
-            displayImage(selectedFile);
-            
-            if (imageName != null) {
-                try {
-                    profileImage = Files.readAllBytes(selectedFile.toPath());
-                    if (Application.performProfileUpdate(loginForm.getUserEntry(), profileImage)) {
-                        System.out.print("apple");
-                    }
-                } catch (IOException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-    
     public File getSelectedFile() {
         return selectedFile;
-    }
-    
-    public byte[] getProfileImage() {
-        return this.profileImage;
-    }
-    
-    public void setHeaderText(String emailAddress) {
-        this.emailAddress = emailAddress;
-        headerText.setText(emailAddress);
     }
 
     private ImageAvatar header;

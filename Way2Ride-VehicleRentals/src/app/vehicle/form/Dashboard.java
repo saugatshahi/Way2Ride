@@ -3,27 +3,33 @@ package app.vehicle.form;
 import app.admin.menu.ScrollBar;
 import app.vehicle.component.CarItem;
 import app.vehicle.dao.CategoryDAO;
+import app.vehicle.main.Application;
 import app.vehicle.model.CategoryModel;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.awt.Component;
+import java.awt.Cursor;
 import raven.glasspanepopup.DefaultOption;
 import raven.glasspanepopup.GlassPanePopup;
 
 public final class Dashboard extends javax.swing.JPanel {
     
     private Notification notify;
+    private static SearchBar searchBar;
+    private CouponFrame couponFrame;
     
 
     public Dashboard() {
         initComponents();
+        
+        jLabel3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         scroll.setVerticalScrollBar(new ScrollBar());
-
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(fontFilePath));
@@ -47,7 +53,7 @@ public final class Dashboard extends javax.swing.JPanel {
     for (CategoryModel categoryData : categoryVehicle) {
         panelItem1.add(new CarItem(categoryData.getCategory(), categoryData.getFeatures(), categoryData.getBrand(),
                        categoryData.getPowerSource(), categoryData.getLimitations(), 
-                       categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
+                       "NRs." + categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
     }
 }
 
@@ -67,6 +73,7 @@ public final class Dashboard extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         panelItem1 = new app.vehicle.design.PanelItem();
+        jButton2 = new javax.swing.JButton();
 
         textBox1.setBackground(new java.awt.Color(237, 237, 237));
         textBox1.setRoundBottomLeft(12);
@@ -105,6 +112,11 @@ public final class Dashboard extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(255, 92, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Vector (3).png"))); // NOI18N
         jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/logo.png"))); // NOI18N
 
@@ -122,12 +134,24 @@ public final class Dashboard extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Group.png"))); // NOI18N
         jLabel4.setText("Logout");
         jLabel4.setIconTextGap(8);
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         scroll.setBorder(null);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         panelItem1.setOpaque(false);
         scroll.setViewportView(panelItem1);
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -142,11 +166,13 @@ public final class Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -154,9 +180,9 @@ public final class Dashboard extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,8 +205,14 @@ public final class Dashboard extends javax.swing.JPanel {
                     .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,21 +221,63 @@ public final class Dashboard extends javax.swing.JPanel {
         GlassPanePopup.showPopup(notify, new DefaultOption() {
             @Override
             public float opacity() {
-                return 0.03f;
+                return 0.05f;
             }
 
             @Override
             public String getLayout(Component parent, float animate) {
-                float xOffset = 0.83f;
-                float yOffset = 0.16f;
+                float xOffset = 0.81f;
+                float yOffset = 0.19f;
 
                 return "pos " + xOffset + "al " + yOffset + "al";
             }
         });
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        Application.logout();
+    }//GEN-LAST:event_jLabel4MouseClicked
+  
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        searchBar = new SearchBar();
+        
+        GlassPanePopup.showPopup(searchBar, new DefaultOption() {
+            @Override
+            public float opacity() {
+                return 0.05f;
+            }
+            
+            @Override
+            public String getLayout(Component parent, float animate) {
+                float xOffset = 0.764f;
+                float yOffset = 0.145f;
+
+                return "pos " + xOffset + "al " + yOffset + "al";
+            }
+        });
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        couponFrame = new CouponFrame();
+        GlassPanePopup.showPopup(couponFrame, new DefaultOption() {
+            @Override
+            public float opacity() {
+                return 0.05f;
+            }
+            
+            @Override
+            public String getLayout(Component parent, float animate) {
+                float xOffset = 0.764f;
+                float yOffset = 0.145f;
+
+                return "pos " + xOffset + "al " + yOffset + "al";
+            }
+        });
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

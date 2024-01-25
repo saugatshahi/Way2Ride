@@ -1,5 +1,6 @@
 package app.admin.main;
 
+import app.admin.form.AddNotification;
 import app.admin.form.AdminDashboard;
 import app.admin.form.SettingsForm;
 import java.awt.BorderLayout;
@@ -18,7 +19,6 @@ public class RunAdminPanel extends javax.swing.JFrame {
         initComponents();
         init();
         body.setLayout(new BorderLayout());
-
     }
     
     private void init() {
@@ -29,6 +29,9 @@ public class RunAdminPanel extends javax.swing.JFrame {
                 adminDashboard.setPreferredSize(new Dimension(800, 600));
             showForm(adminDashboard);
 
+            } else if(index == 1 && indexSubMenu == 2){
+                AddNotification addNotification = new AddNotification();
+                showForm(addNotification);
             } else {
                 showForm(new SettingsForm(index + " " + indexSubMenu));
             }

@@ -1,4 +1,4 @@
-package app.admin.menu;
+package app.admin.design;
 
 import app.vehicle.design.ModernScrollBarUI;
 import java.awt.Color;

@@ -1,9 +1,9 @@
 package app.vehicle.table;
 
-import app.admin.menu.ScrollBar;
+import app.admin.design.ScrollBar;
 import java.awt.Color;
 import java.awt.Component;
-import app.admin.menu.SystemColor;
+import app.admin.design.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;

@@ -11,7 +11,6 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
-import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -22,7 +21,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import raven.toast.Notifications;
 
 
 
@@ -54,6 +52,7 @@ public class CarItem extends javax.swing.JPanel {
         lbcarPrice.setText(price);
         lbcarSeats.setText(quantity);
         lbcarName.setText(brand);
+        
         if (carImage != null) {
             pic.setImage(byteArrayToImageIcon(carImage));
         }

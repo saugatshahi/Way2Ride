@@ -1,4 +1,4 @@
-package app.admin.menu;
+package app.admin.design;
 
 import java.awt.Color;
 

@@ -1,6 +1,6 @@
 package app.vehicle.form;
 
-import app.admin.menu.ScrollBar;
+import app.admin.design.ScrollBar;
 import app.vehicle.component.CarItem;
 import app.vehicle.dao.CategoryDAO;
 import app.vehicle.main.Application;

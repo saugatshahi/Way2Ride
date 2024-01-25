@@ -17,6 +17,7 @@ import app.vehicle.authentication.RegisterDocument;
 import app.vehicle.authentication.SecurityQsnForm;
 import raven.toast.Notifications;
 import app.vehicle.dao.AuthDAO;
+import app.vehicle.dao.ProfileChangeDAO;
 import app.vehicle.menu.Menu;
 import app.vehicle.model.Customer;
 import app.vehicle.model.License;
@@ -164,8 +165,8 @@ public class Application extends javax.swing.JFrame {
     }
     
     public static boolean performProfileUpdate(String emailAddress, byte[] profilePicture) {
-        AuthDAO auth = new AuthDAO();
-        boolean success = auth.updateProfilePicture(application.loginForm.getUserEntry(), application.menu.getProfileImage());
+        ProfileChangeDAO profileChange = new ProfileChangeDAO();
+        boolean success = profileChange.updateProfilePicture(application.loginForm.getUserEntry(), application.menu.getProfileImage());
         return success;
     }
     

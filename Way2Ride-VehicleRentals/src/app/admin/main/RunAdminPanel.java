@@ -1,7 +1,7 @@
 package app.admin.main;
 
 import app.admin.form.AddNotification;
-import app.admin.form.AddVehicle;
+
 import app.admin.form.AllVehicle;
 import java.awt.BorderLayout;
 
@@ -12,17 +12,17 @@ import java.awt.BorderLayout;
 public class RunAdminPanel extends javax.swing.JFrame {
 
     private AllVehicle allVehicle;
-    private AddVehicle addVehicle;
+ 
     private AddNotification addNotification;
     
     public RunAdminPanel() {
         initComponents();
         
         allVehicle = new AllVehicle();
-        addVehicle = new AddVehicle();
+       
         
         addNotification = new AddNotification();
-        setContentPane(addVehicle);
+        
     }
     
     @SuppressWarnings("unchecked")

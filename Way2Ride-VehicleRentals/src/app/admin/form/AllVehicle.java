@@ -1,5 +1,9 @@
 package app.admin.form;
 
+import app.vehicle.component.CarItem;
+import app.vehicle.dao.CategoryDAO;
+import app.admin.controller.CategoryController;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,8 +16,21 @@ public final class AllVehicle extends javax.swing.JPanel {
      */
     public AllVehicle() {
         initComponents();
-        addCarForm();
+        addCategory();
     }
+    
+    private void addCategory() {
+    CategoryDAO categoryDAO = new CategoryDAO();
+    List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+
+    for (CategoryController categoryData : categoryVehicle) {
+        panelItem1.add(new AdminCarCategory(categoryData.getCategory(), categoryData.getBrand(),
+                       categoryData.getPowerSource(), categoryData.getLimitations(), 
+                       "NRs." + categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
+    }
+    repaint();
+    revalidate();
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -45,13 +62,4 @@ public final class AllVehicle extends javax.swing.JPanel {
     private app.vehicle.design.PanelItem panelItem1;
     // End of variables declaration//GEN-END:variables
 
-    public void addCarForm() {
-        System.out.println("Add Car Running!");
-         panelItem1.add(new AdminCarCategory("label", "sabel", "dabel", "habel", "jabek", "nobel", new ImageIcon(getClass().getResource("/app/dashboard/png/Group 34.png/"))));
-         panelItem1.add(new AdminCarCategory("label", "sabel", "dabel", "habel", "jabek", "nobel", new ImageIcon(getClass().getResource("/app/dashboard/png/Group 34.png/"))));
-         panelItem1.add(new AdminCarCategory("label", "sabel", "dabel", "habel", "jabek", "nobel", new ImageIcon(getClass().getResource("/app/dashboard/png/Group 34.png/"))));
-         panelItem1.add(new AdminCarCategory("label", "sabel", "dabel", "habel", "jabek", "nobel", new ImageIcon(getClass().getResource("/app/dashboard/png/Group 34.png/"))));
-         repaint();
-         revalidate();
-    }
 }

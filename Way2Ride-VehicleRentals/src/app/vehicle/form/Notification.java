@@ -2,7 +2,7 @@ package app.vehicle.form;
 
 import app.vehicle.dao.NotificationDAO;
 import app.vehicle.design.ModernScrollBarUI;
-import app.vehicle.model.AdmiNotification;
+import app.admin.controller.NotificationController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -46,9 +46,9 @@ public class Notification extends javax.swing.JPanel {
     private void loadNoti() {
     NotificationDAO notifyDAO = new NotificationDAO();
     
-    List<AdmiNotification> notificationList = notifyDAO.fetchAllNotificationsInDescendingOrder();
+    List<NotificationController> notificationList = notifyDAO.fetchAllNotificationsInDescendingOrder();
     
-    for (AdmiNotification notificationData : notificationList) {
+    for (NotificationController notificationData : notificationList) {
         jPanel1.add(new NotificationItem("Admin", notificationData.getDescription(), "2 days ago", new ImageIcon(getClass().getResource("/app/dashboard/png/pexels-marcelo-dias-2010877.jpg/"))));
     }
 }

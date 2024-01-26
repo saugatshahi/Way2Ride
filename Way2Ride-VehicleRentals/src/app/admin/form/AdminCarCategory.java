@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
  */
 public class AdminCarCategory extends javax.swing.JPanel {
 
-    public AdminCarCategory(String category, String brand, String powerSource, String limitations, String price, String quantity, ImageIcon carImage) {
+    public AdminCarCategory(String category, String brand, String powerSource, String limitations, String price, String quantity, byte[] carImage) {
         initComponents();
         
         lbcarCategory1.setText(category); 
@@ -18,8 +18,12 @@ public class AdminCarCategory extends javax.swing.JPanel {
         lbcarName1.setText(brand);
         
         if (carImage != null) {
-            pic1.setImage(carImage);
+            ImageIcon imageIcon = new ImageIcon(carImage);
+            pic1.setImage(imageIcon);
         }
+        
+        
+        
     }
 
     /**
@@ -53,18 +57,18 @@ public class AdminCarCategory extends javax.swing.JPanel {
 
         lbcarFeatures1.setText("Features");
 
-        pictureBox3.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/UserIcon.png"))); // NOI18N
+        pictureBox3.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Vector (4)_1.png"))); // NOI18N
 
         lbcarSeats1.setText("5");
 
         pictureBox6.setFocusable(false);
-        pictureBox6.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Clip path group.png"))); // NOI18N
+        pictureBox6.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Vector (5)_1.png"))); // NOI18N
 
         lbcarMilage1.setText("Unlimited Milage");
 
         lbcarCategory1.setText("Electric");
 
-        pictureBox5.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/UserIcon.png"))); // NOI18N
+        pictureBox5.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/XMLID_1594_.png"))); // NOI18N
 
         lbreserveDetails1.setBackground(new java.awt.Color(255, 102, 0));
         lbreserveDetails1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N

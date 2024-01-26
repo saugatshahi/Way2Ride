@@ -9,20 +9,25 @@
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/design/ShadowPanel.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/main/Application.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/model/CategoryModel.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/model/Customer.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/form/AdminDashboard.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/SearchItems.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/component/CarDesc.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/CouponCodes.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/component/CarItem.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/sticky/MainForm.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/authentication/RegisterCustomer.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/design/DataSearch.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/CouponFrame.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/model/NotificationModel.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/database/MySqlConnection.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/PaymentGateway.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/form/AddNotification.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/modelItem/ModelDesc.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/design/SystemColor.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/design/RippleEffect.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/model/LoginResult.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/design/ButtonArrayExample.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/dashboard/png/Clip%20path%20group.png</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/dao/NotificationDAO.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/dao/ProfileChangeDAO.java</file>
@@ -41,9 +46,11 @@
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/CarDetails.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/authentication/RegisterDocument.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/authentication/SecurityQsnForm.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/design/PanelShadow.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/HelpSupport.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/FourWheeler.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/form/SettingsForm.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/model/License.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/Notification.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/table/Table.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/SearchBar.java</file>
@@ -51,8 +58,9 @@
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/design/ScrollBar.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/Dashboard.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/design/SearchTextField.java</file>
-            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/model/AdmiNotification.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/controller/CategoryController.java</file>
             <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/vehicle/form/NotificationItem.java</file>
+            <file>file:/C:/Users/Public/Way2Ride-VehicleRentals/Way2Ride-VehicleRentals/src/app/admin/controller/NotificationController.java</file>
         </group>
     </open-files>
 </project-private>

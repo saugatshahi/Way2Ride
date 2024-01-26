@@ -1,7 +1,8 @@
 package app.vehicle.dao;
 
 import app.vehicle.database.MySqlConnection;
-import app.vehicle.model.AdmiNotification;
+import app.admin.controller.NotificationController;
+import app.vehicle.model.NotificationModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,8 +16,8 @@ import java.util.List;
  */
 public class NotificationDAO extends MySqlConnection {
     
-    public List<AdmiNotification> fetchAllNotificationsInDescendingOrder() {
-        List<AdmiNotification> notificationList = new ArrayList<>();
+    public List<NotificationController> fetchAllNotificationsInDescendingOrder() {
+        List<NotificationController> notificationList = new ArrayList<>();
 
         try (Connection conn = openConnection()) {
             String selectQuery = "SELECT DescriptionNote FROM notification_store " +
@@ -26,7 +27,7 @@ public class NotificationDAO extends MySqlConnection {
             try (PreparedStatement ps = conn.prepareStatement(selectQuery)) {
                 try (ResultSet resultSet = ps.executeQuery()) {
                     while (resultSet.next()) {
-                        AdmiNotification notificationData = new AdmiNotification();
+                        NotificationController notificationData = new NotificationController();
                         notificationData.setDescription(resultSet.getString("DescriptionNote"));
 
                         notificationList.add(notificationData);
@@ -39,5 +40,20 @@ public class NotificationDAO extends MySqlConnection {
         }
 
         return notificationList;
+    }
+    
+    public boolean pushNotification(NotificationModel notification) {
+        try (Connection conn = openConnection()) {
+            String selectNotification = "INSERT INTO notification_store (DescriptionNote) VALUES (?)";
+            
+            try (PreparedStatement ps = conn.prepareStatement(selectNotification)) {
+                ps.setString(1, notification.getDescriptionNote());
+            int result = ps.executeUpdate();
+                return result > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

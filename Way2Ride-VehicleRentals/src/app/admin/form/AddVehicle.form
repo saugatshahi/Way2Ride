@@ -21,32 +21,42 @@
 =======
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="textField7" pref="343" max="32767" attributes="0"/>
-                          <Component id="textField6" max="32767" attributes="0"/>
-                          <Component id="textField4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="textField2" max="32767" attributes="0"/>
+                          <Component id="busEntcry" pref="343" max="32767" attributes="0"/>
+                          <Component id="categoryName" max="32767" attributes="0"/>
+                          <Component id="vehicleEntry" alignment="0" max="32767" attributes="0"/>
+                          <Component id="carEntry" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="textField3" pref="343" max="32767" attributes="0"/>
-                          <Component id="textField5" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="brandEntry" pref="343" max="32767" attributes="0"/>
+                                  <Component id="nameEntry" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="275" max="32767" attributes="0"/>
+                              <Component id="jButton2" min="-2" pref="87" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="468" max="32767" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="427" max="-2" attributes="0"/>
           </Group>
 >>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
       </Group>
@@ -57,39 +67,43 @@
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
 =======
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textField6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="categoryName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="brandEntry" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="textField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="vehicleEntry" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameEntry" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="textField2" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="textField7" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Component id="carEntry" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="busEntcry" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="62" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
 >>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
@@ -141,28 +155,19 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="textField1"/>
       </Properties>
+=======
+    <Component class="app.vehicle.design.TextField" name="carEntry">
+>>>>>>> cd7ba1c5f594ec847aba12779a4a335ee77124cb
     </Component>
-    <Component class="app.vehicle.design.TextField" name="textField3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField1"/>
-      </Properties>
+    <Component class="app.vehicle.design.TextField" name="brandEntry">
     </Component>
-    <Component class="app.vehicle.design.TextField" name="textField4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField1"/>
-      </Properties>
+    <Component class="app.vehicle.design.TextField" name="vehicleEntry">
     </Component>
-    <Component class="app.vehicle.design.TextField" name="textField5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField1"/>
-      </Properties>
+    <Component class="app.vehicle.design.TextField" name="nameEntry">
     </Component>
-    <Component class="app.vehicle.design.TextField" name="textField6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="textField1"/>
-      </Properties>
+    <Component class="app.vehicle.design.TextField" name="categoryName">
     </Component>
-    <Component class="app.vehicle.design.TextField" name="textField7">
+    <Component class="app.vehicle.design.TextField" name="busEntcry">
       <Properties>
         <Property name="text" type="java.lang.String" value="textField1"/>
       </Properties>
@@ -186,7 +191,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="36" style="0"/>
+          <Font name="Segoe UI" size="26" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Upload Image"/>
       </Properties>
@@ -194,6 +199,17 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
       </Events>
     </Component>
+<<<<<<< HEAD
 >>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
+=======
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton2"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
+    </Component>
+>>>>>>> cd7ba1c5f594ec847aba12779a4a335ee77124cb
   </SubComponents>
 </Form>

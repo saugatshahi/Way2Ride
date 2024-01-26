@@ -1,7 +1,7 @@
 package app.admin.form;
 
 import app.vehicle.dao.AuthDAO;
-import app.vehicle.model.AdmiNotification;
+import app.admin.controller.NotificationController;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 

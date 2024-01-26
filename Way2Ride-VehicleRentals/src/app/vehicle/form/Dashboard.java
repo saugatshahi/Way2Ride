@@ -4,7 +4,7 @@ import app.admin.design.ScrollBar;
 import app.vehicle.component.CarItem;
 import app.vehicle.dao.CategoryDAO;
 import app.vehicle.main.Application;
-import app.vehicle.model.CategoryModel;
+import app.admin.controller.CategoryController;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -48,14 +48,14 @@ public final class Dashboard extends javax.swing.JPanel {
      
     private void addCategory() {
     CategoryDAO categoryDAO = new CategoryDAO();
-    List<CategoryModel> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+    List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
 
-    for (CategoryModel categoryData : categoryVehicle) {
-        panelItem1.add(new CarItem(categoryData.getCategory(), categoryData.getFeatures(), categoryData.getBrand(),
+    for (CategoryController categoryData : categoryVehicle) {
+        panelItem1.add(new CarItem(categoryData.getCategory(), "Features", categoryData.getBrand(),
                        categoryData.getPowerSource(), categoryData.getLimitations(), 
                        "NRs." + categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
     }
-}
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

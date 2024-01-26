@@ -1,11 +1,11 @@
-package app.vehicle.model;
+package app.admin.controller;
 
-public class AdmiNotification{
+public class NotificationController{
     private int notifyId;
     private String description;
 
     // Constructor
-    public AdmiNotification() {
+    public NotificationController() {
     }
 
     // Getter and setter methods

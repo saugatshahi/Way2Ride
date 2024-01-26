@@ -88,13 +88,13 @@ public class AddVehicle extends javax.swing.JPanel {
         
     }
     
->>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
+3dde8319eaa1ad79e1d7033c145bcd94274a44db
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+ HEAD
+ HEAD
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -121,21 +121,20 @@ public class AddVehicle extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(297, Short.MAX_VALUE))
         );
-=======
+
         textField2 = new app.vehicle.design.TextField();
         textField3 = new app.vehicle.design.TextField();
         textField4 = new app.vehicle.design.TextField();
         textField5 = new app.vehicle.design.TextField();
         textField6 = new app.vehicle.design.TextField();
         textField7 = new app.vehicle.design.TextField();
-=======
-        carEntry = new app.vehicle.design.TextField();
+carEntry = new app.vehicle.design.TextField();
         brandEntry = new app.vehicle.design.TextField();
         vehicleEntry = new app.vehicle.design.TextField();
         nameEntry = new app.vehicle.design.TextField();
         categoryName = new app.vehicle.design.TextField();
         busEntcry = new app.vehicle.design.TextField();
->>>>>>> cd7ba1c5f594ec847aba12779a4a335ee77124cb
+ cd7ba1c5f594ec847aba12779a4a335ee77124cb
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -160,7 +159,7 @@ public class AddVehicle extends javax.swing.JPanel {
                 jLabel2MouseClicked(evt);
             }
         });
->>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
+ 3dde8319eaa1ad79e1d7033c145bcd94274a44db
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +172,7 @@ public class AddVehicle extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
+ HEAD
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -187,7 +186,7 @@ public class AddVehicle extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-=======
+
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,17 +297,17 @@ public class AddVehicle extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-<<<<<<< HEAD
+ HEAD
     private app.vehicle.design.TextField textField2;
     private app.vehicle.design.TextField textField3;
     private app.vehicle.design.TextField textField4;
     private app.vehicle.design.TextField textField5;
     private app.vehicle.design.TextField textField6;
     private app.vehicle.design.TextField textField7;
->>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
-=======
+3dde8319eaa1ad79e1d7033c145bcd94274a44db
+
     private app.vehicle.design.TextField nameEntry;
     private app.vehicle.design.TextField vehicleEntry;
->>>>>>> cd7ba1c5f594ec847aba12779a4a335ee77124cb
+ cd7ba1c5f594ec847aba12779a4a335ee77124cb
     // End of variables declaration//GEN-END:variables
 }

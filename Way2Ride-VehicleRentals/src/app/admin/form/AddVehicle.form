@@ -16,9 +16,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
+ HEAD
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-=======
+
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -58,14 +58,14 @@
                   </Group>
               </Group>
           </Group>
->>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
+ 3dde8319eaa1ad79e1d7033c145bcd94274a44db
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
+HEAD
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-=======
+
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -98,13 +98,13 @@
               <Component id="jButton1" min="-2" pref="62" max="-2" attributes="0"/>
               <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
->>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
+ 3dde8319eaa1ad79e1d7033c145bcd94274a44db
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-<<<<<<< HEAD
-<<<<<<< HEAD
+ HEAD
+ HEAD
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -150,14 +150,14 @@
         </Container>
       </SubComponents>
     </Container>
-=======
+
     <Component class="app.vehicle.design.TextField" name="textField2">
       <Properties>
         <Property name="text" type="java.lang.String" value="textField1"/>
       </Properties>
-=======
+
     <Component class="app.vehicle.design.TextField" name="carEntry">
->>>>>>> cd7ba1c5f594ec847aba12779a4a335ee77124cb
+ cd7ba1c5f594ec847aba12779a4a335ee77124cb
     </Component>
     <Component class="app.vehicle.design.TextField" name="brandEntry">
     </Component>
@@ -199,9 +199,9 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
       </Events>
     </Component>
-<<<<<<< HEAD
->>>>>>> 3dde8319eaa1ad79e1d7033c145bcd94274a44db
-=======
+ HEAD
+3dde8319eaa1ad79e1d7033c145bcd94274a44db
+
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton2"/>
@@ -210,6 +210,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
       </Events>
     </Component>
->>>>>>> cd7ba1c5f594ec847aba12779a4a335ee77124cb
+cd7ba1c5f594ec847aba12779a4a335ee77124cb
   </SubComponents>
 </Form>

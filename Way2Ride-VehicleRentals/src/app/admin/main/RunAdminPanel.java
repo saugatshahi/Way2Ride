@@ -12,16 +12,18 @@ import java.awt.BorderLayout;
 public class RunAdminPanel extends javax.swing.JFrame {
 
     private AllVehicle allVehicle;
- 
+   
     private AddNotification addNotification;
     
     public RunAdminPanel() {
         initComponents();
         
+        
         allVehicle = new AllVehicle();
        
         
         addNotification = new AddNotification();
+        setContentPane(addNotification);
         
     }
     

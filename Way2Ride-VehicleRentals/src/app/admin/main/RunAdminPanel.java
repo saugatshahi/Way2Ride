@@ -2,6 +2,7 @@ package app.admin.main;
 
 import app.admin.form.AddNotification;
 import app.admin.form.AddVehicle;
+import app.admin.form.AdminDashboard;
 
 import app.admin.form.AllVehicle;
 import app.vehicle.main.Application;
@@ -23,8 +24,8 @@ public class RunAdminPanel extends javax.swing.JFrame {
     private void init() {
     menu11.setEvent1((int index, int subIndex) -> {
         System.out.println(index + " " + subIndex);
-        if (index == 1 && subIndex == 1) {
-            showForm(new AddNotification());
+        if (index == 0 ) {
+            showForm(new AdminDashboard());
         } else if (index == 1 && subIndex == 2) {
             showForm(new AddVehicle());
         } else if (index == 2) {

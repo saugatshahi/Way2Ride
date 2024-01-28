@@ -8,16 +8,27 @@ import java.awt.Window;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class LoginForm extends javax.swing.JPanel {
     
     private final Cursor buttonCursor;
+    private ForgotPassword forgotPassword;
+    private JDialog forgotPasswordDialog;
     
     public LoginForm() {
         
         initComponents();
+        forgotPassword = new ForgotPassword();
+
+      
+        forgotPasswordDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Payment Details", true);
+        forgotPasswordDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        forgotPasswordDialog.getContentPane().add(forgotPassword);
+        forgotPasswordDialog.pack();
+        
         
         pwdEntry.putClientProperty(FlatClientProperties.STYLE, "showRevealButton:true");
         buttonCursor = new Cursor(Cursor.HAND_CURSOR);
@@ -134,6 +145,11 @@ public class LoginForm extends javax.swing.JPanel {
 
         forgotPwdButton.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         forgotPwdButton.setText("Forgot Password?");
+        forgotPwdButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotPwdButtonMouseClicked(evt);
+            }
+        });
         pictureBox1.add(forgotPwdButton);
         forgotPwdButton.setBounds(1142, 453, 120, 21);
 
@@ -252,6 +268,19 @@ public class LoginForm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_loginValidationActionPerformed
 
+    private void forgotPwdButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPwdButtonMouseClicked
+        showForgotPasswordDialog();
+    }//GEN-LAST:event_forgotPwdButtonMouseClicked
+ private void showForgotPasswordDialog() {
+       int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - forgotPasswordDialog.getWidth() / 2);
+        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - forgotPasswordDialog.getHeight() / 2);
+
+        // Set the location of the dialog
+        forgotPasswordDialog.setLocation(centerX, centerY);
+
+        // Make the dialog visible
+        forgotPasswordDialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aboutUs;

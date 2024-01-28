@@ -18,6 +18,9 @@ import app.vehicle.authentication.SecurityQsnForm;
 import raven.toast.Notifications;
 import app.vehicle.dao.AuthDAO;
 import app.vehicle.dao.ProfileChangeDAO;
+import app.vehicle.dao.SecurityDAO;
+import static app.vehicle.dao.SecurityDAO.ForgotPasswordStatus.ERROR;
+import static app.vehicle.dao.SecurityDAO.ForgotPasswordStatus.SUCCESS;
 import app.vehicle.menu.Menu;
 import app.vehicle.model.Customer;
 import app.vehicle.model.License;
@@ -162,6 +165,34 @@ public class Application extends javax.swing.JFrame {
             }
         }
         return false;
+    }
+//    public static boolean performReset(String emailAddress, String enteredSecurityQuestion) {
+//    SecurityDAO authReset = new SecurityDAO();
+//
+//    SecurityDAO.ForgotPasswordStatus resetStatus = authReset.validateSecurityQuestion(emailAddress, enteredSecurityQuestion);
+//
+//    switch (resetStatus) {
+//        case SUCCESS -> {
+//            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Login dine");
+//             break;
+//            }
+//        
+//        case ERROR -> {
+//            JOptionPane.showMessageDialog(null, "An error occurred. Please try again later.");
+//            break;
+//            }
+//        default -> {
+//           
+//            }
+//    }
+//    return false;
+//}
+          public static boolean performReset(String emailAddress, String enteredSecurityQuestion) {
+        SecurityDAO authReset = new SecurityDAO();
+
+        SecurityDAO.ForgotPasswordStatus forgotPasswordStatus = authReset.validateSecurityQuestion(emailAddress, enteredSecurityQuestion);
+
+        return forgotPasswordStatus == SecurityDAO.ForgotPasswordStatus.SUCCESS;
     }
     
     public static boolean performProfileUpdate(String emailAddress, byte[] profilePicture) {

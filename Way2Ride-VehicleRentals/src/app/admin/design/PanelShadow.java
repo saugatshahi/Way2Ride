@@ -8,6 +8,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import app.vehicle.design.ShadowRenderer;
+import app.vehicle.design.WrapLayout;
 
 public class PanelShadow extends JPanel {
     
@@ -100,6 +101,8 @@ public class PanelShadow extends JPanel {
         roundPanel.setRoundBottomLeft(20);
         roundPanel.setRoundBottomRight(20);
         roundPanel.setOpacity(0.8f);
+        
+         setLayout(new WrapLayout(WrapLayout.LEFT, 1, 1));
     }
 
     @Override

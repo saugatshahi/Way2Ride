@@ -1,10 +1,12 @@
 package app.admin.form;
 
-import app.vehicle.component.CarItem;
 import app.vehicle.dao.CategoryDAO;
 import app.admin.controller.CategoryController;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -16,6 +18,7 @@ public final class AllVehicle extends javax.swing.JPanel {
      */
     public AllVehicle() {
         initComponents();
+        setSize(new Dimension(1101, 747));
         addCategory();
     }
     
@@ -23,15 +26,19 @@ public final class AllVehicle extends javax.swing.JPanel {
     CategoryDAO categoryDAO = new CategoryDAO();
     List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
 
-    for (CategoryController categoryData : categoryVehicle) {
-        panelItem1.add(new AdminCarCategory(categoryData.getCategory(), categoryData.getBrand(),
-                       categoryData.getPowerSource(), categoryData.getLimitations(), 
-                       "NRs." + categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
+    if (categoryVehicle.isEmpty()) {
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/app/admin/logo/13315296_5206507-removebg-preview.png"));
+        JLabel contentNotFoundLabel = new JLabel("", imageIcon, JLabel.CENTER);
+        panelItem1.setLayout(new BorderLayout());
+        panelItem1.add(contentNotFoundLabel, BorderLayout.CENTER);
+    } else {
+        for (CategoryController categoryData : categoryVehicle) {
+            panelItem1.add(new AdminCarCategory(categoryData.getBrand(), categoryData.getPrice(), categoryData.getCarImage()));
+        }
     }
     repaint();
     revalidate();
 }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,6 +46,8 @@ public final class AllVehicle extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         panelItem1 = new app.vehicle.design.PanelItem();
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setViewportView(panelItem1);
         panelItem1.getAccessibleContext().setAccessibleDescription("");
 
@@ -50,9 +59,7 @@ public final class AllVehicle extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

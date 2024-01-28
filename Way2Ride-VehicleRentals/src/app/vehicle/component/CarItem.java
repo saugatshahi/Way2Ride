@@ -57,7 +57,7 @@ public class CarItem extends javax.swing.JPanel {
             pic.setImage(byteArrayToImageIcon(carImage));
         }
         
-        paymentGatewayPanel = new PaymentGateway();
+        paymentGatewayPanel = new PaymentGateway(brand, price, carImage);
 
         paymentDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Payment Details", true);
         paymentDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
@@ -131,7 +131,7 @@ public class CarItem extends javax.swing.JPanel {
         lbcarCategory = new javax.swing.JLabel();
         lbcarMilage = new javax.swing.JLabel();
         lbcarPrice = new javax.swing.JLabel();
-        lbreserveDetails = new javax.swing.JButton();
+        reserveDealBtn = new javax.swing.JButton();
         pic = new app.vehicle.design.PictureBox();
         pictureBox1 = new app.vehicle.design.PictureBox();
         pictureBox2 = new app.vehicle.design.PictureBox();
@@ -159,13 +159,13 @@ public class CarItem extends javax.swing.JPanel {
 
         lbcarPrice.setText("NRs. 17,000");
 
-        lbreserveDetails.setBackground(new java.awt.Color(255, 102, 0));
-        lbreserveDetails.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lbreserveDetails.setForeground(new java.awt.Color(255, 255, 255));
-        lbreserveDetails.setText("Reserve Deal");
-        lbreserveDetails.addActionListener(new java.awt.event.ActionListener() {
+        reserveDealBtn.setBackground(new java.awt.Color(255, 102, 0));
+        reserveDealBtn.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        reserveDealBtn.setForeground(new java.awt.Color(255, 255, 255));
+        reserveDealBtn.setText("Reserve Deal");
+        reserveDealBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lbreserveDetailsActionPerformed(evt);
+                reserveDealBtnActionPerformed(evt);
             }
         });
 
@@ -186,7 +186,7 @@ public class CarItem extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbcarPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(38, 38, 38)
-                .addComponent(lbreserveDetails)
+                .addComponent(reserveDealBtn)
                 .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,15 +245,15 @@ public class CarItem extends javax.swing.JPanel {
                     .addComponent(lbcarMilage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbreserveDetails)
+                    .addComponent(reserveDealBtn)
                     .addComponent(lbcarPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lbreserveDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbreserveDetailsActionPerformed
+    private void reserveDealBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveDealBtnActionPerformed
         showPaymentDialog();
-    }//GEN-LAST:event_lbreserveDetailsActionPerformed
+    }//GEN-LAST:event_reserveDealBtnActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         CategoryDAO categoryDAO = new CategoryDAO();
@@ -290,10 +290,10 @@ public class CarItem extends javax.swing.JPanel {
     private javax.swing.JLabel lbcarPrice;
     private javax.swing.JLabel lbcarSeats;
     private javax.swing.JLabel lbcarType;
-    private javax.swing.JButton lbreserveDetails;
     private app.vehicle.design.PictureBox pic;
     private app.vehicle.design.PictureBox pictureBox1;
     private app.vehicle.design.PictureBox pictureBox2;
     private app.vehicle.design.PictureBox pictureBox4;
+    private javax.swing.JButton reserveDealBtn;
     // End of variables declaration//GEN-END:variables
 }

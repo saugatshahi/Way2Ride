@@ -69,4 +69,20 @@ public class CategoryDAO extends MySqlConnection {
         }
         return false;
     }
+    
+    public boolean deleteCategoryByBrand(String brand) {
+    try (Connection conn = openConnection()) {
+        String deleteQuery = "DELETE FROM modelitem WHERE Brand = ?";
+        
+        try (PreparedStatement ps = conn.prepareStatement(deleteQuery)) {
+            ps.setString(1, brand);
+            
+            int result = ps.executeUpdate();
+            return result > 0;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
 }

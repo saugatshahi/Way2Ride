@@ -1,13 +1,10 @@
 package app.admin.main;
 
 import app.admin.form.AddNotification;
-import app.admin.form.AdminDashboard;
+import app.admin.form.AddVehicle;
 
 import app.admin.form.AllVehicle;
-import app.admin.menu.Menu1;
-import app.admin.menu.MenuEvent1;
 import app.vehicle.main.Application;
-import java.awt.BorderLayout;
 import java.awt.Component;
 
 /**
@@ -15,63 +12,31 @@ import java.awt.Component;
  * @author shahi
  */
 public class RunAdminPanel extends javax.swing.JFrame {
-//
-//    private AllVehicle allVehicle;
-//   
-//    private AddNotification addNotification;
-//    
-//    public RunAdminPanel() {
-//        initComponents();
-//        
-//        
-//        allVehicle = new AllVehicle();
-//       
-//        
-//        addNotification = new AddNotification();
-//        setContentPane(addNotification);
-//        
-//    }
-    
-     private static RunAdminPanel adminMain;
-    private AdminDashboard adminDashboard;
+
     public RunAdminPanel() {
         initComponents();
-        adminDashboard = new AdminDashboard();
-//        setContentPane(adminDashboard);
-//        init();
-       menu11.setEvent1(new MenuEvent1(){
-        @Override
-        public void selected(int index, int subIndex){
-            System.out.println(index+" "+ subIndex);
-            if (index == 0 && subIndex == 0) {
-                showForm(new AddNotification());
-                System.out.println("Hello");
-            } else if (index == 7) {
-                Application.openLoginForm();
-//                this.dispose();
-            }
-            else {
-                showForm(new AllVehicle());
-            }
-        }
-       });
+        init();
+        
     }
-//    private void init() {
-//        adminMain = this;
-//        menu11.setEvent1(int index, int indexSubMenu) -> {
-//            if (index == 0 && indexSubMenu == 0) {
-//                showForm(new AddNotification());
-//                System.out.print("Hello");
-//            } else if (index == 7) {
-//                Application.openLoginForm();
-////                this.dispose();
-//            }
-//            else {
-//                showForm(new AdminPanel());
-//            }
-//        });
-//        menuAdmin1.setSelectedIndex(0, 0);
-//    }
+    
+    
+    private void init() {
+    menu11.setEvent1((int index, int subIndex) -> {
+        System.out.println(index + " " + subIndex);
+        if (index == 1 && subIndex == 1) {
+            showForm(new AddNotification());
+        } else if (index == 1 && subIndex == 2) {
+            showForm(new AddVehicle());
+        } else if (index == 2) {
+            showForm(new AllVehicle());
+        } else if (index == 7) {
+            dispose();
+            Application.openLoginForm();
+        } else {
+            showForm(new AllVehicle());
+        }
+    });
+}
     
     public void showForm(Component com) {
         body.removeAll();
@@ -79,6 +44,7 @@ public class RunAdminPanel extends javax.swing.JFrame {
         body.repaint();
         body.revalidate();
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,11 +59,11 @@ public class RunAdminPanel extends javax.swing.JFrame {
         body.setLayout(bodyLayout);
         bodyLayout.setHorizontalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1032, Short.MAX_VALUE)
+            .addGap(0, 1095, Short.MAX_VALUE)
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8316, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,7 +71,7 @@ public class RunAdminPanel extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(menu11, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu11, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

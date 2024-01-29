@@ -132,7 +132,7 @@ public class SearchBar extends javax.swing.JPanel {
     List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
 
     for (CategoryController categoryData : categoryVehicle) {
-        String vehicleName = categoryData.getBrand(shahi); 
+        String vehicleName = categoryData.getBrand(); 
         
         if (vehicleName.toLowerCase().contains(search.toLowerCase())) {
             boolean story = isVehicles(vehicleName); 

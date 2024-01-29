@@ -44,17 +44,20 @@
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="lbcarSeats" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="pictureBox1" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="lbcarSeats" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="pictureBox1" min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="lbcarCategory" min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lbcarMilage" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lbcarMilage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -99,7 +102,7 @@
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pictureBox2" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lbcarMilage" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -180,7 +183,7 @@
     <Container class="app.vehicle.design.PictureBox" name="pictureBox1">
       <Properties>
         <Property name="image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/app/vehicle/logo/UserIcon.png"/>
+          <Image iconType="3" name="/app/dashboard/png/type.png"/>
         </Property>
       </Properties>
 
@@ -191,7 +194,7 @@
     <Container class="app.vehicle.design.PictureBox" name="pictureBox2">
       <Properties>
         <Property name="image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/app/vehicle/logo/UserIcon.png"/>
+          <Image iconType="3" name="/app/dashboard/png/milage.png"/>
         </Property>
       </Properties>
 
@@ -203,7 +206,7 @@
       <Properties>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="image" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/app/dashboard/png/Clip path group.png"/>
+          <Image iconType="3" name="/app/dashboard/png/people.png"/>
         </Property>
       </Properties>
 

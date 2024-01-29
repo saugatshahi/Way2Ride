@@ -290,4 +290,5 @@ public final class Dashboard extends javax.swing.JPanel {
     private app.vehicle.design.PanelRound textBox4;
     private app.vehicle.design.PanelRound textBox5;
     // End of variables declaration//GEN-END:variables
+
 }

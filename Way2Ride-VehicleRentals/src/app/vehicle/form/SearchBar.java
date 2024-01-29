@@ -1,11 +1,12 @@
 package app.vehicle.form;
 
+import app.admin.controller.CategoryController;
+import app.vehicle.dao.CategoryDAO;
 import app.vehicle.design.DataSearch;
 import app.vehicle.design.EventClick;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -19,6 +20,7 @@ public class SearchBar extends javax.swing.JPanel {
     
     private JPopupMenu menu;
     private PanelSearch search;
+    private SearchBarListener listener;
     
     public SearchBar() {
         initComponents();
@@ -52,6 +54,14 @@ public class SearchBar extends javax.swing.JPanel {
                 System.out.println("Item Removed: " + data.getText());
             }
         });
+    }
+    
+    public void setSearchBarListener(SearchBarListener listener) {
+        this.listener = listener;
+    }
+    
+    public interface SearchBarListener {
+        void onVehicleSelected(String vehicleName);
     }
 
     /**
@@ -115,44 +125,30 @@ public class SearchBar extends javax.swing.JPanel {
     }//GEN-LAST:event_textSearchKeyReleased
     
     private List<DataSearch> search(String search) {
+    int limitData = 7;
+    List<DataSearch> list = new ArrayList<>();
+    
+    CategoryDAO categoryDAO = new CategoryDAO();
+    List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+
+    for (CategoryController categoryData : categoryVehicle) {
+        String vehicleName = categoryData.getBrand(shahi); 
         
-        int limitData = 7;
-        List<DataSearch> list = new ArrayList<>();
-        
-        String dataTesting[] = {"Honda Accord",
-                "Toyota Camry",
-                "Ford F-150",
-                "Chevrolet Silverado",
-                "Jeep Wrangler",
-                "Subaru Outback",
-                "Mercedes-Benz C-Class",
-                "BMW 3 Series,Audi A4",
-                "Hyundai Sonata,Lexus RX",
-                "Volvo XC90,Tesla Model 3",
-                "Jeep Grand Cherokee",
-                "Toyota RAV4",
-                "Honda CR-V",
-                "Ford Mustang",
-                "Chevrolet Tahoe",
-                "Nissan Altima",
-                "Subaru Forester"
-        };
-        
-        for (String d: dataTesting) {
-            if (d.toLowerCase().contains(search)) {
-                boolean story = isVehicles(d);
-                if (story) {
-                    list.add(0, new DataSearch(d, story));
-                } else {
-                    list.add(new DataSearch(d, story));
-                }
-                if (list.size() == limitData) {
-                    break;
-                }
+        if (vehicleName.toLowerCase().contains(search.toLowerCase())) {
+            boolean story = isVehicles(vehicleName); 
+            
+            if (story) {
+                list.add(0, new DataSearch(vehicleName, story));
+            } else {
+                list.add(new DataSearch(vehicleName, story));
+            }
+            if (list.size() == limitData) {
+                break;
             }
         }
-        return list;
     }
+    return list;
+}
     
     String dataStory[] = {"Honda Accord",
                 "Toyota Camry",

@@ -11,6 +11,7 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -54,7 +55,7 @@ public class CarItem extends javax.swing.JPanel {
         lbcarName.setText(brand);
         
         if (carImage != null) {
-            pic.setImage(byteArrayToImageIcon(carImage));
+            pic.setImage(byteArrayToImageIcon(carImage,150,100));
         }
         
         paymentGatewayPanel = new PaymentGateway(brand, price, carImage);
@@ -109,17 +110,18 @@ public class CarItem extends javax.swing.JPanel {
         g2.dispose();
         super.paint(grphcs);
     }
-  
-    private ImageIcon byteArrayToImageIcon(byte[] byteArray) {
+  private ImageIcon byteArrayToImageIcon(byte[] byteArray, int width, int height) {
     try {
         ByteArrayInputStream bis = new ByteArrayInputStream(byteArray);
         BufferedImage image = ImageIO.read(bis);
-        return new ImageIcon(image); // Adjust width and height as needed
+        Image resizedImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(resizedImage);
     } catch (IOException e) {
         e.printStackTrace();
         return null;
     }
 }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

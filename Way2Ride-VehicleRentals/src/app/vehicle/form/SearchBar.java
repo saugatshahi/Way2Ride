@@ -1,6 +1,6 @@
 package app.vehicle.form;
 
-import app.admin.controller.CategoryController;
+import app.admin.controller.FourWheelersController;
 import app.vehicle.dao.CategoryDAO;
 import app.vehicle.design.DataSearch;
 import app.vehicle.design.EventClick;
@@ -132,9 +132,9 @@ public class SearchBar extends javax.swing.JPanel {
     List<DataSearch> list = new ArrayList<>();
     
     CategoryDAO categoryDAO = new CategoryDAO();
-    List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+    List<FourWheelersController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
 
-    for (CategoryController categoryData : categoryVehicle) {
+    for (FourWheelersController categoryData : categoryVehicle) {
         String vehicleName = categoryData.getBrand(); 
         
         if (vehicleName.toLowerCase().contains(search.toLowerCase())) {

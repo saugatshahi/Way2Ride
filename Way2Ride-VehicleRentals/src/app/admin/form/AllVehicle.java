@@ -1,7 +1,7 @@
 package app.admin.form;
 
 import app.vehicle.dao.CategoryDAO;
-import app.admin.controller.CategoryController;
+import app.admin.controller.FourWheelersController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.List;
@@ -24,7 +24,7 @@ public final class AllVehicle extends javax.swing.JPanel {
     
     private void addCategory() {
     CategoryDAO categoryDAO = new CategoryDAO();
-    List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+    List<FourWheelersController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
 
     if (categoryVehicle.isEmpty()) {
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/app/admin/logo/13315296_5206507-removebg-preview.png"));
@@ -32,7 +32,7 @@ public final class AllVehicle extends javax.swing.JPanel {
         panelItem1.setLayout(new BorderLayout());
         panelItem1.add(contentNotFoundLabel, BorderLayout.CENTER);
     } else {
-        for (CategoryController categoryData : categoryVehicle) {
+        for (FourWheelersController categoryData : categoryVehicle) {
             panelItem1.add(new AdminCarCategory(categoryData.getBrand(), categoryData.getPrice(), categoryData.getCarImage()));
         }
     }

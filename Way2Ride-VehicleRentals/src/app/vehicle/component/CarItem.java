@@ -4,7 +4,7 @@ package app.vehicle.component;
 import app.vehicle.dao.CategoryDAO;
 import app.vehicle.form.CarDetails;
 import app.vehicle.form.PaymentGateway;
-import app.admin.controller.CategoryController;
+import app.admin.controller.FourWheelersController;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -263,9 +263,9 @@ public class CarItem extends javax.swing.JPanel {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         CategoryDAO categoryDAO = new CategoryDAO();
-        List<CategoryController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
+        List<FourWheelersController> categoryVehicle = categoryDAO.fetchAllCategoryInDescendingOrder();
         
-        for (CategoryController categoryData : categoryVehicle) {
+        for (FourWheelersController categoryData : categoryVehicle) {
             if (categoryData.getBrand().equals("Pagani")) {
                 showCarDetailsDialog();
             }

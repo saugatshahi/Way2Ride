@@ -8,6 +8,8 @@ import java.awt.Window;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -17,6 +19,7 @@ public class LoginForm extends javax.swing.JPanel {
     private final Cursor buttonCursor;
     private ForgotPassword forgotPassword;
     private JDialog forgotPasswordDialog;
+     private static Map<String, String> userData = new HashMap<>();
     
     public LoginForm() {
         
@@ -263,11 +266,27 @@ public class LoginForm extends javax.swing.JPanel {
         } else {
             boolean checkValidity = Application.performLogin(getUserEntry(), getPwdEntry());
             if (checkValidity) {
+                userData.put("email", getUserEntry());
+            userData.put("password", getPwdEntry());
+
+            // Print statements to verify the stored data
+            System.out.println("Stored Email: " + getStoredUserEmail());
+            System.out.println("Stored Password: " + getStoredUserPassword());
                 Application.getIntoApp();
             }
         }
+        
     }//GEN-LAST:event_loginValidationActionPerformed
-
+public static String getStoredUserEmail() {
+       String email = userData.get("email");
+    System.out.println("Stored Email: " + email);
+    return email;
+    }
+    
+    // Method to get the stored user password from the HashMap
+    public static String getStoredUserPassword() {
+        return userData.get("password");
+    }
     private void forgotPwdButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPwdButtonMouseClicked
         showForgotPasswordDialog();
     }//GEN-LAST:event_forgotPwdButtonMouseClicked

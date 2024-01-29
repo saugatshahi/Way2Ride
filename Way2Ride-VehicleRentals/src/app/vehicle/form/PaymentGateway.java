@@ -1,6 +1,7 @@
 package app.vehicle.form;
 
 //import java.awt.Color;
+import app.vehicle.authentication.LoginForm;
 import app.vehicle.dao.BillingDAO;
 import app.vehicle.model.BillingOrders;
 import java.awt.Font;
@@ -35,6 +36,11 @@ public class PaymentGateway extends javax.swing.JPanel {
         this.brand = brand;
         this.price = price;
         this.vehicleImage = vehicleImage;
+        
+        String storedEmail = LoginForm.getStoredUserEmail();
+            System.out.println("Fetched Email: " + storedEmail);
+        emailAddress.setText(storedEmail);
+        
        String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(fontFilePath));

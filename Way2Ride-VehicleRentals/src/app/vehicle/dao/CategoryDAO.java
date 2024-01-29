@@ -1,7 +1,8 @@
 package app.vehicle.dao;
 
 import app.vehicle.database.MySqlConnection;
-import app.admin.controller.CategoryController;
+import app.admin.controller.FourWheelersController;
+import app.admin.controller.TwoWheelersController;
 import app.vehicle.model.CategoryModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +17,8 @@ import java.util.List;
  */
 public class CategoryDAO extends MySqlConnection {
     
-    public List<CategoryController> fetchAllCategoryInDescendingOrder() {
-        List<CategoryController> categoryVehicle = new ArrayList<>();
+    public List<FourWheelersController> fetchAllCategoryInDescendingOrder() {
+        List<FourWheelersController> categoryVehicle = new ArrayList<>();
         
         try (Connection conn = openConnection()) {
             String selectCategory = "SELECT * FROM ModelItem " +
@@ -27,7 +28,7 @@ public class CategoryDAO extends MySqlConnection {
             try (PreparedStatement ps = conn.prepareStatement(selectCategory)) {
                 try (ResultSet resultSet = ps.executeQuery()) {
                     while (resultSet.next()) {
-                        CategoryController categoryModel = new CategoryController();
+                        FourWheelersController categoryModel = new FourWheelersController();
                         categoryModel.setCategory(resultSet.getString("Category"));
                         categoryModel.setBrand(resultSet.getString("Brand"));
                         categoryModel.setPowerSource(resultSet.getString("PowerSource"));
@@ -44,6 +45,35 @@ public class CategoryDAO extends MySqlConnection {
             System.out.println(e);
         }
         return categoryVehicle;
+    }
+    
+    public List<TwoWheelersController> fetchAllBikesInDescendingOrder() {
+        List<TwoWheelersController> categoryBike = new ArrayList<>();
+        
+        try (Connection conn = openConnection()) {
+            String selectCategory = "SELECT * FROM twowheelers " +
+                    "WHERE ID IS NOT NULL " +
+                    "ORDER BY ID DESC";
+            
+            try (PreparedStatement ps = conn.prepareStatement(selectCategory)) {
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    while (resultSet.next()) {
+                        TwoWheelersController twoWheelers = new TwoWheelersController();
+                        twoWheelers.setBikeName(resultSet.getString("BikeName"));
+                        twoWheelers.setBrand(resultSet.getString("BikeBrand"));
+                        twoWheelers.setPrice(resultSet.getString("BikePrice"));
+                        twoWheelers.setSpeed(resultSet.getString("BikeSpeed"));
+                        twoWheelers.setBikePower(resultSet.getString("BikePower"));
+                        twoWheelers.setBikeImage(resultSet.getBytes("BikeImage"));
+                        
+                        categoryBike.add(twoWheelers);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return categoryBike;
     }
     
     public boolean saveCategory(CategoryModel modelItem) {

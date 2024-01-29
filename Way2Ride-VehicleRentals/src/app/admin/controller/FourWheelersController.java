@@ -1,6 +1,6 @@
 package app.admin.controller;
 
-public class CategoryController {
+public class FourWheelersController {
     
     private String category;
     private String brand;
@@ -42,7 +42,7 @@ public class CategoryController {
         this.quantity = quantity;
     }
     
-    public CategoryController() {
+    public FourWheelersController() {
         
     }
 

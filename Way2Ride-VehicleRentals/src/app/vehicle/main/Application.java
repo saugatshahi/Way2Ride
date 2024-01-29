@@ -194,13 +194,6 @@ public class Application extends javax.swing.JFrame {
 
         return forgotPasswordStatus == SecurityDAO.ForgotPasswordStatus.SUCCESS;
     }
-    
-    public static boolean performProfileUpdate(String emailAddress, byte[] profilePicture) {
-        ProfileChangeDAO profileChange = new ProfileChangeDAO();
-        boolean success = profileChange.updateProfilePicture(application.loginForm.getUserEntry(), application.menu.getProfileImage());
-        return success;
-    }
-    
 
 
     @SuppressWarnings("unchecked")

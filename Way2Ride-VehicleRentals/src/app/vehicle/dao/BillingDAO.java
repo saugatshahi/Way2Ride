@@ -15,17 +15,24 @@ import java.util.List;
  */
 public class BillingDAO extends MySqlConnection {
     
-    public boolean saveOrderData(BillingOrders billings) {
+    public boolean saveOrderData(String userEmail, BillingOrders billings) {
     try (Connection conn = openConnection()) {
         String insertQuery = "INSERT INTO OrderTrack " +
-                "(OrderID, CarImage, CarName, TransactionDate) " +
-                "VALUES (?, ?, ?, ?)";
+                "(OrderID, CarImage, CarName, TransactionDate, HolderName, HolderNumber, CVV, ExpDate, PostalCode, EmailAddress, Price) " + // Add UserEmail column
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = conn.prepareStatement(insertQuery)) {
             ps.setString(1, billings.getOrderID());
             ps.setBytes(2, billings.getImage());
             ps.setString(3, billings.getVehicleName());
             ps.setString(4, billings.getTransDate());
+            ps.setString(5, billings.getHolderName());
+            ps.setString(6, billings.getHolderNumber());
+            ps.setString(7, billings.getcVV());
+            ps.setString(8, billings.getExpDate());
+            ps.setString(9, billings.getPostalCode());
+            ps.setString(10, userEmail);
+            ps.setString(11, billings.getPrice());
 
             int result = ps.executeUpdate();
             if (result > 0) {
@@ -36,16 +43,19 @@ public class BillingDAO extends MySqlConnection {
         e.printStackTrace();
     }
     return false;
-  }
-    
-    public List<OrderTrackController> fetchAllOrdersInDescendingOrder() {
+}
+
+public List<OrderTrackController> fetchAllOrdersInDescendingOrder(String userEmail) {
     List<OrderTrackController> orderList = new ArrayList<>();
 
     try (Connection conn = openConnection()) {
         String selectQuery = "SELECT OrderID, CarName, TransactionDate, CarImage FROM OrderTrack " +
+                             "WHERE EmailAddress = ? " + // Add condition to fetch orders for a specific user
                              "ORDER BY OrderID DESC";
 
         try (PreparedStatement ps = conn.prepareStatement(selectQuery)) {
+            ps.setString(1, userEmail);
+
             try (ResultSet resultSet = ps.executeQuery()) {
                 while (resultSet.next()) {
                     OrderTrackController orderData = new OrderTrackController();
@@ -64,6 +74,7 @@ public class BillingDAO extends MySqlConnection {
 
     return orderList;
 }
+
     
     public boolean deleteHistory(String orderID) {
     try (Connection conn = openConnection()) {

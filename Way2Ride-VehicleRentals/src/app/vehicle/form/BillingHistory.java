@@ -1,16 +1,14 @@
 package app.vehicle.form;
 
-import app.admin.controller.CategoryController;
-import app.vehicle.component.CarItem;
 import app.vehicle.controller.BillingItem;
 import app.vehicle.controller.OrderTrackController;
 import app.vehicle.dao.BillingDAO;
-import app.vehicle.dao.CategoryDAO;
 import app.vehicle.design.ModernScrollBarUI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JScrollBar;
+import net.miginfocom.swing.MigLayout;
 
 /**
  *
@@ -31,13 +29,14 @@ public class BillingHistory extends javax.swing.JPanel {
         sb.setUI(new ModernScrollBarUI());
         jScrollPane1.getViewport().setOpaque(false);
         jScrollPane1.setViewportBorder(null);
-        
+        panelItem1.setLayout(new MigLayout("inset 2, fillx, wrap", "[fill]"));
         addBills();
     }
     
     private void addBills() {
+        
     BillingDAO billingDAO = new BillingDAO();
-    List<OrderTrackController> vehicleOrders = billingDAO.fetchAllOrdersInDescendingOrder();
+    List<OrderTrackController> vehicleOrders = billingDAO.fetchAllOrdersInDescendingOrder("shahi");
 
     for (OrderTrackController orderData : vehicleOrders) {
         panelItem1.add(new BillingItem(orderData.getOrderID(), orderData.getCarImage(), orderData.getCarName(), orderData.getTransactionDate()));

@@ -47,6 +47,30 @@ public class PaymentGateway extends javax.swing.JPanel {
         }
         setOpaque(false);
     }
+    
+    public String getCardNumber() {
+        return cardNumber.getText();
+    }
+    
+    public String getCardHolderName() {
+        return cardHolderName.getText();
+    }
+    
+    public String getPostalCode() {
+        return postalCode.getText();
+    }
+    
+    public String getCvv() {
+        return cvv.getText();
+    }
+    
+    public String getExpiryDate() {
+        return expiryDate.getText();
+    }
+    
+    public String getEmailAddress() {
+        return emailAddress.getText();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -368,10 +392,16 @@ public class PaymentGateway extends javax.swing.JPanel {
                 orderID,
                 vehicleImage,
                 brand,
-                currentDate
+                currentDate,
+                getCardHolderName(),
+                getCardNumber(),
+                getCvv(),
+                getExpiryDate(),
+                getPostalCode(), 
+                price
         );
         
-        boolean check = billings.saveOrderData(billingOrders);
+        boolean check = billings.saveOrderData(getEmailAddress(), billingOrders);
         
         if (check) {
             Notifications.getInstance().show(Notifications.Type.SUCCESS, "Your order has been placed!");

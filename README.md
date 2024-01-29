@@ -18,10 +18,13 @@ Way2Ride Vehicle Rental is a sophisticated platform designed to redefine the veh
 - CarDescription Panel
 - ModelDescription Class
 - Car details Panel
+  
 
   
 ## Admin Dashboard
 - Admin Menu Form
+- Admin Users Table
+- Total Profit 
   
 
 ## Getting Started

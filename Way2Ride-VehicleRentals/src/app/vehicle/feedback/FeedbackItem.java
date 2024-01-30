@@ -12,14 +12,8 @@ import javax.swing.ImageIcon;
  */
 public class FeedbackItem extends javax.swing.JPanel {
 
-    /**
-     * Creates new form FeedbackItem
-     * @param title
-     * @param img
-     * @param comment
-     */
     public FeedbackItem(String title, byte[] img, String comment) {
-        
+        initComponents();
         header.setText(title);
         
         if (img != null) {
@@ -28,7 +22,6 @@ public class FeedbackItem extends javax.swing.JPanel {
         }
         
         cmt.setText(comment);
-        initComponents();
     }
 
     /**

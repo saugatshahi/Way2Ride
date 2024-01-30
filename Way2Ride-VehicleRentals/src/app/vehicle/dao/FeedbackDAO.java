@@ -48,6 +48,7 @@ public class FeedbackDAO extends MySqlConnection {
 
     try (Connection conn = openConnection()) {
         String selectQuery = "SELECT *FROM userfeedback " + 
+                             "WHERE uid IS NOT NULL " +
                              "ORDER BY uid DESC"; 
 
         try (PreparedStatement ps = conn.prepareStatement(selectQuery)) {
@@ -55,8 +56,9 @@ public class FeedbackDAO extends MySqlConnection {
             try (ResultSet resultSet = ps.executeQuery()) {
                 while (resultSet.next()) {
                     FeedbackController feedbackData = new FeedbackController();
-                    feedbackData.setTitle(resultSet.getString("emailAddress"));
+                    feedbackData.setTitle(resultSet.getString("FullName"));
                     feedbackData.setComment(resultSet.getString("description"));
+                    feedbackData.setImg(resultSet.getBytes("screenshot"));
                     
                     feedbackList.add(feedbackData);
                 }
@@ -69,3 +71,33 @@ public class FeedbackDAO extends MySqlConnection {
     return feedbackList;
 }
 }
+//
+//public List<FourWheelersController> fetchAllCategoryInDescendingOrder() {
+//        List<FourWheelersController> categoryVehicle = new ArrayList<>();
+//        
+//        try (Connection conn = openConnection()) {
+//            String selectCategory = "SELECT * FROM ModelItem " +
+//                    "WHERE ModelId IS NOT NULL " +
+//                    "ORDER BY ModelId DESC";
+//            
+//            try (PreparedStatement ps = conn.prepareStatement(selectCategory)) {
+//                try (ResultSet resultSet = ps.executeQuery()) {
+//                    while (resultSet.next()) {
+//                        FourWheelersController categoryModel = new FourWheelersController();
+//                        categoryModel.setCategory(resultSet.getString("Category"));
+//                        categoryModel.setBrand(resultSet.getString("Brand"));
+//                        categoryModel.setPowerSource(resultSet.getString("PowerSource"));
+//                        categoryModel.setLimitations(resultSet.getString("Limitations"));
+//                        categoryModel.setPrice(resultSet.getString("Price"));
+//                        categoryModel.setQuantity(resultSet.getString("Quantity"));
+//                        categoryModel.setCarImage(resultSet.getBytes("CarImage"));
+//                        
+//                        categoryVehicle.add(categoryModel);
+//                    }
+//                }
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//        return categoryVehicle;
+//    }

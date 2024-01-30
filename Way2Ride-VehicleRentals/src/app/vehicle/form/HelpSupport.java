@@ -1,10 +1,7 @@
 package app.vehicle.form;
 
-import app.admin.controller.FourWheelersController;
 import app.vehicle.authentication.LoginForm;
 import app.vehicle.authentication.RegisterDocument;
-import app.vehicle.component.CarItem;
-import app.vehicle.dao.CategoryDAO;
 import app.vehicle.dao.FeedbackDAO;
 import app.vehicle.feedback.FeedbackController;
 import app.vehicle.feedback.FeedbackItem;
@@ -260,11 +257,13 @@ public class HelpSupport extends javax.swing.JPanel {
         if (check) {
             Notifications.getInstance().show(Notifications.Type.SUCCESS, "Feedback Submitted!");
         } else {
-            Notifications.getInstance().show(Notifications.Type.SUCCESS, "Feedback can't be submitted right now!");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, "Feedback Submitted from another email!");
         }
         
-//       FeedbackItem feedbackItem = new FeedbackItem(emailField.getText(), imageData, descField.getText());
-//            panelItem1.add(feedbackItem);
+       FeedbackItem feedbackItem = new FeedbackItem(emailField.getText(), imageData, descField.getText());
+            panelItem1.add(feedbackItem);
+            repaint();
+            revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -273,7 +272,7 @@ public class HelpSupport extends javax.swing.JPanel {
     List<FeedbackController> feedbackList = feedDAO.fetchAllFeedback();
 
     for (FeedbackController feedback : feedbackList) {
-            FeedbackItem feedbackItem = new FeedbackItem(feedback.getTitle(), imageData, feedback.getComment());
+            FeedbackItem feedbackItem = new FeedbackItem(feedback.getTitle(), feedback.getImg(), feedback.getComment());
             panelItem1.add(feedbackItem);
     }
 }

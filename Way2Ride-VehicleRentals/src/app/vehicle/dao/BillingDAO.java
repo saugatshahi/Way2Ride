@@ -9,10 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author shahi
- */
+
 public class BillingDAO extends MySqlConnection {
     
     public boolean saveOrderData(String userEmail, BillingOrders billings) {
@@ -22,7 +19,7 @@ public class BillingDAO extends MySqlConnection {
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         
-        //BACKEND ARYAN BASNET AND SAUGAT SHAHI
+        //BACKEND AARYAN BASNET AND SAUGAT SHAHI
 
         try (PreparedStatement ps = conn.prepareStatement(insertQuery)) {
             ps.setString(1, billings.getOrderID());

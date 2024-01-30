@@ -86,10 +86,10 @@ public class MainForm extends JLayeredPane {
                     }
                 }
 
-                case 2 -> Application.changeContentPane(new RewardPoints());
-                case 3 -> Application.changeContentPane(new BillingHistory());
-                case 4 -> Application.changeContentPane(new HelpSupport());
-                case 5 -> Application.changeContentPane(new Settings());
+               
+                case 2 -> Application.changeContentPane(new BillingHistory());
+                case 3 -> Application.changeContentPane(new HelpSupport());
+                case 4 -> Application.changeContentPane(new Settings());
                 default -> action.cancel();
             }
         });

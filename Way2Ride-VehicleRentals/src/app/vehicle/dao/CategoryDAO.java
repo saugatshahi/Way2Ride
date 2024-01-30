@@ -11,10 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author shahi
- */
+
 public class CategoryDAO extends MySqlConnection {
     
     public List<FourWheelersController> fetchAllCategoryInDescendingOrder() {

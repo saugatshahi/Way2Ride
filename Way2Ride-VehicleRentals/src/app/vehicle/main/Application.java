@@ -55,7 +55,7 @@ public class Application extends javax.swing.JFrame {
         securityQsn = new SecurityQsnForm();
         menu = new Menu();
         
-        setContentPane(loginForm);
+        setContentPane(mainForm);
         Notifications.getInstance().setJFrame(this);
         GlassPanePopup.install(this);
     }

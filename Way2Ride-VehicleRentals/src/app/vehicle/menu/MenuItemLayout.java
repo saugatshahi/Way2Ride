@@ -46,7 +46,7 @@ public class MenuItemLayout implements LayoutManager {
                     }
                 }
             }
-            return new Dimension(5, height);
+            return new Dimension(5, height+100);
         }
     }
 
@@ -78,7 +78,7 @@ public class MenuItemLayout implements LayoutManager {
                             com.setBounds(x + menuTitleInset, y, titleWidth, comHeight);
                             y += comHeight + menuTitleVgap;
                         } else {
-                            com.setBounds(0, 0, 0, 0);
+                            com.setBounds(0, 100, 0, 0);
                         }
                     } else {
                         com.setBounds(x, y, width, comHeight);

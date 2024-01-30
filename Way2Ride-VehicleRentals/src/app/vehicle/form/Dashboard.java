@@ -64,9 +64,13 @@ public final class Dashboard extends javax.swing.JPanel {
         textBox1 = new app.vehicle.design.PanelRound();
         jLabel2 = new javax.swing.JLabel();
         textBox2 = new app.vehicle.design.PanelRound();
+        jLabel5 = new javax.swing.JLabel();
         textBox3 = new app.vehicle.design.PanelRound();
+        jLabel6 = new javax.swing.JLabel();
         textBox4 = new app.vehicle.design.PanelRound();
+        jLabel7 = new javax.swing.JLabel();
         textBox5 = new app.vehicle.design.PanelRound();
+        jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -91,11 +95,19 @@ public final class Dashboard extends javax.swing.JPanel {
         textBox2.setRoundTopLeft(12);
         textBox2.setRoundTopRight(12);
 
+        jLabel5.setText("Pick Up Date");
+        textBox2.add(jLabel5);
+        jLabel5.setBounds(20, 10, 80, 16);
+
         textBox3.setBackground(new java.awt.Color(237, 237, 237));
         textBox3.setRoundBottomLeft(12);
         textBox3.setRoundBottomRight(12);
         textBox3.setRoundTopLeft(12);
         textBox3.setRoundTopRight(12);
+
+        jLabel6.setText("Dropoff date");
+        textBox3.add(jLabel6);
+        jLabel6.setBounds(20, 10, 80, 16);
 
         textBox4.setBackground(new java.awt.Color(237, 237, 237));
         textBox4.setRoundBottomLeft(12);
@@ -103,11 +115,19 @@ public final class Dashboard extends javax.swing.JPanel {
         textBox4.setRoundTopLeft(12);
         textBox4.setRoundTopRight(12);
 
+        jLabel7.setText("Pickup location");
+        textBox4.add(jLabel7);
+        jLabel7.setBounds(20, 10, 110, 16);
+
         textBox5.setBackground(new java.awt.Color(237, 237, 237));
         textBox5.setRoundBottomLeft(12);
         textBox5.setRoundBottomRight(12);
         textBox5.setRoundTopLeft(12);
         textBox5.setRoundTopRight(12);
+
+        jLabel8.setText("Dropoff Location");
+        textBox5.add(jLabel8);
+        jLabel8.setBounds(20, 10, 100, 16);
 
         jButton1.setBackground(new java.awt.Color(255, 92, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Vector (3).png"))); // NOI18N
@@ -146,7 +166,10 @@ public final class Dashboard extends javax.swing.JPanel {
         panelItem1.setOpaque(false);
         scroll.setViewportView(panelItem1);
 
-        jButton2.setText("jButton2");
+        jButton2.setBackground(new java.awt.Color(255, 102, 0));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("RewardPoint");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -166,11 +189,8 @@ public final class Dashboard extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125)
-                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -180,10 +200,14 @@ public final class Dashboard extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,6 +306,10 @@ public final class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private app.vehicle.design.PanelItem panelItem1;
     private javax.swing.JScrollPane scroll;
     private app.vehicle.design.PanelRound textBox1;

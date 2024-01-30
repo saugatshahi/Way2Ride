@@ -16,7 +16,7 @@ public class AdminDashboard extends javax.swing.JPanel {
 
     public AdminDashboard() {
         initComponents();
-        setBackground(Color.RED);
+        setBackground(Color.WHITE);
         setSize(new Dimension(1101, 747));
         init();
     }
@@ -36,7 +36,6 @@ public class AdminDashboard extends javax.swing.JPanel {
                     + "ORDER BY EmailAddress DESC";
             ResultSet resultSet = mySqlConnection.runQuery(connection, query);
 
-            // Get metadata for column names
             java.sql.ResultSetMetaData metaData = resultSet.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] columnNames = new String[columnCount];
@@ -46,11 +45,9 @@ public class AdminDashboard extends javax.swing.JPanel {
                 System.out.println("Column Name: " + metaData.getColumnName(i));
             }
 
-            // Set column names to the table model
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
             table.setModel(tableModel);
 
-            // Populate table with data
             while (resultSet.next()) {
                 Object[] rowData = new Object[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
@@ -157,10 +154,6 @@ public class AdminDashboard extends javax.swing.JPanel {
 
 private double calculateOverallTotalAmount() {
         double overallTotalAmount = 0.0;
-
-        // Implement the logic to calculate the overall total amount from the database
-        // You may need to query your user_totals table or another relevant table for this information
-
         MySqlConnection mySqlConnection = new MySqlConnection();
         Connection connection = mySqlConnection.openConnection();
 
@@ -172,22 +165,18 @@ private double calculateOverallTotalAmount() {
                 if (resultSet.next()) {
                     overallTotalAmount = resultSet.getDouble(1);
                 }
-
                 mySqlConnection.closeConnection(connection);
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
         return overallTotalAmount;
     }
 private int calculateNumberOfUsers() {
         int numberOfUsers = 0;
-
         MySqlConnection mySqlConnection = new MySqlConnection();
         Connection connection = mySqlConnection.openConnection();
-
         if (connection != null) {
             try {
                 String query = "SELECT COUNT(*) FROM user_details";

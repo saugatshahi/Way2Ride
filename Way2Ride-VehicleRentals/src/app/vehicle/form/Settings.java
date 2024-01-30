@@ -6,10 +6,7 @@ import app.vehicle.model.FetchDataModel;
 import javax.swing.ImageIcon;
 import raven.toast.Notifications;
 
-/**
- *
- * @author shahi
- */
+
 public class Settings extends javax.swing.JPanel {
 
     public Settings() {
@@ -41,7 +38,7 @@ public class Settings extends javax.swing.JPanel {
     }
     
     private void saveChanges() {
-        // Get updated values from the fields
+        
         String fullName = fullNameField.getText();
         String contactNo = contactField.getText();
         String homeAddress = homeAddressField.getText();
@@ -49,7 +46,6 @@ public class Settings extends javax.swing.JPanel {
         String issuedDate = issueDateField.getText();
         String expiryDate = expiryDateField.getText();
 
-        // Update the FetchDataModel object
         fetchData.setFullName(fullName);
         fetchData.setContactNo(contactNo);
         fetchData.setHomeAddress(homeAddress);
@@ -58,14 +54,13 @@ public class Settings extends javax.swing.JPanel {
         fetchData.setExpiryDate(expiryDate);
         fetchData.setEmailAddress(storedEmail);
 
-        // Update the database
+        
         boolean success = profileDAO.updateCustomerData(fetchData);
 
-        // Display success/failure message to the user
         if (success) {
             Notifications.getInstance().show(Notifications.Type.SUCCESS, "Changes Saved Successfully!");
         } else {
-            Notifications.getInstance().show(Notifications.Type.ERROR, "Sorry boi!");
+            Notifications.getInstance().show(Notifications.Type.ERROR, "Error occured");
         }
     }
     

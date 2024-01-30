@@ -7,10 +7,7 @@ import java.awt.Container;
 import javax.swing.ImageIcon;
 import raven.toast.Notifications;
 
-/**
- *
- * @author shahi
- */
+
 public class BillingItem extends javax.swing.JPanel {
 
     public BillingItem(String orderId, byte[] vehicleImg, String nameOfVehicle, String dateTrans) {
@@ -20,7 +17,7 @@ public class BillingItem extends javax.swing.JPanel {
         
         if (vehicleImg != null) {
             ImageIcon newImage = new ImageIcon(vehicleImg);
-            vehicleImage.setIcon(newImage);
+            pictureBox1.setImage(newImage);
         }
         
         vehicleName.setText(nameOfVehicle);
@@ -32,13 +29,11 @@ public class BillingItem extends javax.swing.JPanel {
     private void initComponents() {
 
         panelShadow1 = new app.admin.design.PanelShadow();
-        vehicleImage = new javax.swing.JLabel();
         vehicleName = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         orderID = new javax.swing.JLabel();
         cancelOrder = new javax.swing.JButton();
-
-        vehicleImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Tesla1.png"))); // NOI18N
+        pictureBox1 = new app.vehicle.design.PictureBox();
 
         vehicleName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
         vehicleName.setForeground(new java.awt.Color(102, 102, 102));
@@ -62,6 +57,8 @@ public class BillingItem extends javax.swing.JPanel {
             }
         });
 
+        pictureBox1.setImage(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/buggati1.png"))); // NOI18N
+
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
         panelShadow1Layout.setHorizontalGroup(
@@ -69,9 +66,9 @@ public class BillingItem extends javax.swing.JPanel {
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(orderID)
-                .addGap(46, 46, 46)
-                .addComponent(vehicleImage, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(pictureBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(vehicleName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -84,18 +81,19 @@ public class BillingItem extends javax.swing.JPanel {
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelShadow1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelShadow1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vehicleName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cancelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelShadow1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(vehicleImage, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelShadow1Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelShadow1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(vehicleName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cancelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 28, Short.MAX_VALUE))
+                    .addComponent(pictureBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -141,7 +139,7 @@ public class BillingItem extends javax.swing.JPanel {
     private javax.swing.JLabel date;
     private javax.swing.JLabel orderID;
     private app.admin.design.PanelShadow panelShadow1;
-    private javax.swing.JLabel vehicleImage;
+    private app.vehicle.design.PictureBox pictureBox1;
     private javax.swing.JLabel vehicleName;
     // End of variables declaration//GEN-END:variables
 }

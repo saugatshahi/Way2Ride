@@ -1,5 +1,6 @@
 package app.vehicle.form;
 
+import app.vehicle.authentication.LoginForm;
 import app.vehicle.controller.BillingItem;
 import app.vehicle.controller.OrderTrackController;
 import app.vehicle.dao.BillingDAO;
@@ -10,10 +11,7 @@ import java.util.List;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 
-/**
- *
- * @author shahi
- */
+
 public class BillingHistory extends javax.swing.JPanel {
 
     public BillingHistory() {
@@ -36,7 +34,8 @@ public class BillingHistory extends javax.swing.JPanel {
     private void addBills() {
         
     BillingDAO billingDAO = new BillingDAO();
-    List<OrderTrackController> vehicleOrders = billingDAO.fetchAllOrdersInDescendingOrder("shahi");
+     String storedEmail = LoginForm.getStoredUserEmail();
+    List<OrderTrackController> vehicleOrders = billingDAO.fetchAllOrdersInDescendingOrder(storedEmail);
 
     for (OrderTrackController orderData : vehicleOrders) {
         panelItem1.add(new BillingItem(orderData.getOrderID(), orderData.getCarImage(), orderData.getCarName(), orderData.getTransactionDate()));

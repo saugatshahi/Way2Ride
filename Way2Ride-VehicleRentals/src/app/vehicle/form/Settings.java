@@ -1,13 +1,26 @@
 package app.vehicle.form;
 
 import app.vehicle.authentication.LoginForm;
+import app.vehicle.authentication.RegisterDocument;
 import app.vehicle.dao.ProfileChangeDAO;
 import app.vehicle.model.FetchDataModel;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import raven.toast.Notifications;
 
 
 public class Settings extends javax.swing.JPanel {
+    
+    private File selectedFile;
+    private byte[] imageData;
 
     public Settings() {
         initComponents();
@@ -143,6 +156,11 @@ public class Settings extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/component/Vector (7).png"))); // NOI18N
         jLabel5.setText("Change");
         jLabel5.setIconTextGap(8);
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         licenseNumberField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -311,7 +329,50 @@ public class Settings extends javax.swing.JPanel {
         saveChanges();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        JFileChooser fileChooser = new JFileChooser();
+        
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
+        fileChooser.setFileFilter(imageFilter);
+        
+        int result = fileChooser.showOpenDialog(this);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();
+            String imageName = selectedFile.getName();
+            if (imageFilter.accept(selectedFile)) {
+                displayImage(selectedFile);
+                if (imageName != null) {
+                    try {
+                       imageData = Files.readAllBytes(selectedFile.toPath());
+                    } catch (IOException ex) {
+                        Logger.getLogger(RegisterDocument.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Invalid Image Format!");
+                } 
+            }
+        }
+    }//GEN-LAST:event_jLabel5MouseClicked
 
+    public File getSelectedFile() {
+        return selectedFile;
+    }
+    
+    public byte[] getImageData() {
+        return imageData;
+    }
+    
+    public void displayImage(File selectedFile) {
+        try {
+            BufferedImage img = ImageIO.read(selectedFile);
+            ImageIcon icon = new ImageIcon(img);
+            imageAvatar1.setImage(icon);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField contactField;
     private javax.swing.JTextField expiryDateField;

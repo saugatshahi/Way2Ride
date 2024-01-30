@@ -5,10 +5,14 @@
 package app.vehicle.dao;
 
 import app.vehicle.database.MySqlConnection;
+import app.vehicle.feedback.FeedbackController;
 import app.vehicle.model.FeedbackModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.ResultSet;
 
 /**
  *
@@ -37,5 +41,31 @@ public class FeedbackDAO extends MySqlConnection {
         e.printStackTrace();
     }
     return false;
+}
+    
+    public List<FeedbackController> fetchAllFeedback() {
+    List<FeedbackController> feedbackList = new ArrayList<>();
+
+    try (Connection conn = openConnection()) {
+        String selectQuery = "SELECT *FROM userfeedback " + 
+                             "ORDER BY uid DESC"; 
+
+        try (PreparedStatement ps = conn.prepareStatement(selectQuery)) {
+
+            try (ResultSet resultSet = ps.executeQuery()) {
+                while (resultSet.next()) {
+                    FeedbackController feedbackData = new FeedbackController();
+                    feedbackData.setTitle(resultSet.getString("emailAddress"));
+                    feedbackData.setComment(resultSet.getString("description"));
+                    
+                    feedbackList.add(feedbackData);
+                }
+            }
+        }
+    } catch (SQLException e) {
+        System.out.println(e);
+    }
+
+    return feedbackList;
 }
 }

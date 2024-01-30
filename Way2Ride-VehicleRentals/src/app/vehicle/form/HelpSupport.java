@@ -1,11 +1,18 @@
 package app.vehicle.form;
 
+import app.admin.controller.FourWheelersController;
+import app.vehicle.authentication.LoginForm;
 import app.vehicle.authentication.RegisterDocument;
+import app.vehicle.component.CarItem;
+import app.vehicle.dao.CategoryDAO;
 import app.vehicle.dao.FeedbackDAO;
+import app.vehicle.feedback.FeedbackController;
+import app.vehicle.feedback.FeedbackItem;
 import app.vehicle.model.FeedbackModel;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -32,6 +39,8 @@ public class HelpSupport extends javax.swing.JPanel {
         
         String storedEmail = LoginForm.getStoredUserEmail();
         emailField.setText(storedEmail);
+        
+        addFeedbacks();
     }
     
 
@@ -55,6 +64,7 @@ public class HelpSupport extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         descField = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
+        panelItem1 = new app.vehicle.design.PanelItem();
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/vehicle/logo/Vector.png"))); // NOI18N
@@ -121,6 +131,8 @@ public class HelpSupport extends javax.swing.JPanel {
         descField.setLineWrap(true);
         descField.setRows(5);
         jScrollPane1.setViewportView(descField);
+
+        jScrollPane2.setViewportView(panelItem1);
 
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
@@ -243,7 +255,7 @@ public class HelpSupport extends javax.swing.JPanel {
         FeedbackDAO feedback = new FeedbackDAO();
         FeedbackModel feed = new FeedbackModel(getFullNameField(), getDescField(), getImageData(), getEnquiryType());
         
-        boolean check = feedback.saveUserFeedback(storedEmail, feed);
+        boolean check = feedback.saveUserFeedback(emailField.getText(), feed);
         
         if (check) {
             Notifications.getInstance().show(Notifications.Type.SUCCESS, "Feedback Submitted!");
@@ -251,8 +263,21 @@ public class HelpSupport extends javax.swing.JPanel {
             Notifications.getInstance().show(Notifications.Type.SUCCESS, "Feedback can't be submitted right now!");
         }
         
+//       FeedbackItem feedbackItem = new FeedbackItem(emailField.getText(), imageData, descField.getText());
+//            panelItem1.add(feedbackItem);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    private void addFeedbacks() {
+    FeedbackDAO feedDAO = new FeedbackDAO();
+    List<FeedbackController> feedbackList = feedDAO.fetchAllFeedback();
+
+    for (FeedbackController feedback : feedbackList) {
+            FeedbackItem feedbackItem = new FeedbackItem(feedback.getTitle(), imageData, feedback.getComment());
+            panelItem1.add(feedbackItem);
+    }
+}
+    
     private void setupListeners() {
         
     descField.getDocument().addDocumentListener(new DocumentListener() {
@@ -335,6 +360,7 @@ public class HelpSupport extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private app.vehicle.design.PanelItem panelItem1;
     private app.admin.design.PanelShadow panelShadow1;
     // End of variables declaration//GEN-END:variables
 }

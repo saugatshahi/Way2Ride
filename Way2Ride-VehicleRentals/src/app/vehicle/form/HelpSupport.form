@@ -301,6 +301,10 @@
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="app.vehicle.design.PanelItem" name="panelItem1">
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

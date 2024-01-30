@@ -320,6 +320,9 @@
             <Property name="text" type="java.lang.String" value="Change"/>
             <Property name="iconTextGap" type="int" value="8"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel5MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="licenseNumberField">
           <Properties>

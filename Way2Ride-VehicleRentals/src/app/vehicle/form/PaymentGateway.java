@@ -30,6 +30,8 @@ public class PaymentGateway extends javax.swing.JPanel {
     private String brand;
     private String price;
     private byte[] vehicleImage;
+    private String selectedDate1;
+    private String selectedDate2;
     
     public PaymentGateway(String brand, String price, byte[] vehicleImage) {
         initComponents();
@@ -52,6 +54,26 @@ public class PaymentGateway extends javax.swing.JPanel {
             System.out.println(e);
         }
         setOpaque(false);
+        
+        Random random = new Random();
+        String orderID;
+        
+        Set<String> generatedIDs = new HashSet<>();
+        
+        do {
+            int randomNumber = random.nextInt(MAX_ORDER_ID - MIN_ORDER_ID + 1) + MIN_ORDER_ID;
+            orderID = String.format("%0" + ORDER_ID_LENGTH + "d", randomNumber);
+        } while (!generatedIDs.add(orderID));
+        
+               
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String currentDate = currentTime.format(dateFormatter);
+        
+        orderID1.setText("#" + orderID);
+        transactionDate1.setText(currentDate);
+        
     }
     
     public String getCardNumber() {
@@ -107,6 +129,13 @@ public class PaymentGateway extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         transactionDate = new javax.swing.JLabel();
+        orderID1 = new javax.swing.JLabel();
+        transactionDate1 = new javax.swing.JLabel();
+        location1 = new javax.swing.JLabel();
+        streetAddress1 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         postalCode = new javax.swing.JTextField();
         CardExpDate1 = new javax.swing.JLabel();
         CardExpDate2 = new javax.swing.JLabel();
@@ -206,6 +235,31 @@ public class PaymentGateway extends javax.swing.JPanel {
         transactionDate.setForeground(new java.awt.Color(102, 102, 102));
         transactionDate.setText("Transaction Date:");
 
+        orderID1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        orderID1.setForeground(new java.awt.Color(102, 102, 102));
+        orderID1.setText("#00128234");
+
+        transactionDate1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        transactionDate1.setForeground(new java.awt.Color(102, 102, 102));
+        transactionDate1.setText("2024-30-01");
+
+        location1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        location1.setForeground(new java.awt.Color(102, 102, 102));
+        location1.setText("Kharibot, Hattiban");
+
+        streetAddress1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        streetAddress1.setForeground(new java.awt.Color(102, 102, 102));
+        streetAddress1.setText("Sitapkaha, 001 Highway");
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel13.setText("NRs. 12900");
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel18.setText("No Discount");
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel14.setText("5 %");
+
         javax.swing.GroupLayout shadowRentalLayout = new javax.swing.GroupLayout(shadowRental);
         shadowRental.setLayout(shadowRentalLayout);
         shadowRentalLayout.setHorizontalGroup(
@@ -213,22 +267,43 @@ public class PaymentGateway extends javax.swing.JPanel {
             .addGroup(shadowRentalLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transactionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(shadowRentalLayout.createSequentialGroup()
+                        .addComponent(transactionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(transactionDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel17)
                     .addGroup(shadowRentalLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(shadowRentalLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel14))
+                            .addGroup(shadowRentalLayout.createSequentialGroup()
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(shadowRentalLayout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(shadowRentalLayout.createSequentialGroup()
+                        .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(location1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(streetAddress)
+                    .addGroup(shadowRentalLayout.createSequentialGroup()
+                        .addComponent(streetAddress)
+                        .addGap(18, 18, 18)
+                        .addComponent(streetAddress1))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(shadowRentalLayout.createSequentialGroup()
+                        .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(orderID1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         shadowRentalLayout.setVerticalGroup(
             shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,23 +311,37 @@ public class PaymentGateway extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderID1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(transactionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(transactionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transactionDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(location1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(streetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(streetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(streetAddress1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(shadowRentalLayout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
@@ -377,28 +466,15 @@ public class PaymentGateway extends javax.swing.JPanel {
     }//GEN-LAST:event_goBackButtonActionPerformed
 
     private void continueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueButtonActionPerformed
-        Random random = new Random();
-        String orderID;
-        
-        Set<String> generatedIDs = new HashSet<>();
-        
-        do {
-            int randomNumber = random.nextInt(MAX_ORDER_ID - MIN_ORDER_ID + 1) + MIN_ORDER_ID;
-            orderID = String.format("%0" + ORDER_ID_LENGTH + "d", randomNumber);
-        } while (!generatedIDs.add(orderID));
-        
-        LocalDateTime currentTime = LocalDateTime.now();
 
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String currentDate = currentTime.format(dateFormatter);
     
         BillingDAO billings = new BillingDAO();
         
         BillingOrders billingOrders = new BillingOrders(
-                orderID,
+                orderID1.getText(),
                 vehicleImage,
                 brand,
-                currentDate,
+                transactionDate1.getText(),
                 getCardHolderName(),
                 getCardNumber(),
                 getCvv(),
@@ -445,15 +521,22 @@ public class PaymentGateway extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel location;
+    private javax.swing.JLabel location1;
     private javax.swing.JLabel orderID;
+    private javax.swing.JLabel orderID1;
     private javax.swing.JTextField postalCode;
     private app.admin.design.PanelShadow shadowRental;
     private javax.swing.JLabel streetAddress;
+    private javax.swing.JLabel streetAddress1;
     private javax.swing.JLabel transactionDate;
+    private javax.swing.JLabel transactionDate1;
     // End of variables declaration//GEN-END:variables
 }

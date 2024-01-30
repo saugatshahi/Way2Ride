@@ -26,17 +26,17 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="imgHolder" min="-2" pref="215" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="powerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="powerField" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="speedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="speedField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="speedLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="speedField" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">

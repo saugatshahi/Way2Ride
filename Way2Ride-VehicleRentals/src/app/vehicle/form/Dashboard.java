@@ -6,6 +6,7 @@ import app.vehicle.dao.CategoryDAO;
 import app.vehicle.main.Application;
 import app.admin.controller.FourWheelersController;
 import com.formdev.flatlaf.FlatClientProperties;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -13,6 +14,9 @@ import java.io.IOException;
 import java.util.List;
 import java.awt.Component;
 import java.awt.Cursor;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import raven.glasspanepopup.DefaultOption;
 import raven.glasspanepopup.GlassPanePopup;
 
@@ -26,6 +30,12 @@ public final class Dashboard extends javax.swing.JPanel {
     public Dashboard() {
         initComponents();
         
+        dateChooserCombo1.addSelectionChangedListener(event -> {
+        updateSelectedDates();
+    });
+
+    updateSelectedDates();
+        
         jLabel3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
@@ -38,12 +48,29 @@ public final class Dashboard extends javax.swing.JPanel {
             
             Font sizedFont = customFont.deriveFont((float) 13);
             jLabel2.setFont(sizedFont);
+            jLabel5.setFont(sizedFont);
+            jLabel6.setFont(sizedFont);
+            jLabel7.setFont(sizedFont);
+            jTextField1.setFont(sizedFont);
+            jTextField1.setFont(sizedFont);
+            jTextField1.setFont(sizedFont);
+            jLabel8.setFont(sizedFont);
             jLabel2.putClientProperty(FlatClientProperties.STYLE, "");
         } catch (IOException | FontFormatException e) {
             System.out.println(e);
         }
         
+        dateChooserCombo1.setBackground(Color.decode("#EDEDED"));
+        dateChooserCombo2.setBackground(Color.decode("#EDEDED"));
+       
         addCategory();
+    }
+    
+    public Date convertCalendarToDate(Calendar calendar) {
+        long timeInMillis = calendar.getTimeInMillis();
+        Date date = new Date(timeInMillis);
+        
+        return date;
     }
      
     private void addCategory() {
@@ -56,6 +83,17 @@ public final class Dashboard extends javax.swing.JPanel {
                        "NRs." + categoryData.getPrice(), categoryData.getQuantity(), categoryData.getCarImage()));
     }
     }
+    
+    private void updateSelectedDates() {
+    Calendar selectedCalendar1 = dateChooserCombo1.getSelectedDate();
+    Date selectedDate1 = convertCalendarToDate(selectedCalendar1);
+
+    Calendar selectedCalendar2 = dateChooserCombo2.getSelectedDate();
+    Date selectedDate2 = convertCalendarToDate(selectedCalendar2);
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("E MMM dd");
+    String extractedDate1 = dateFormatter.format(selectedDate1);
+    String extractedDate2 = dateFormatter.format(selectedDate2);
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -63,14 +101,19 @@ public final class Dashboard extends javax.swing.JPanel {
 
         textBox1 = new app.vehicle.design.PanelRound();
         jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         textBox2 = new app.vehicle.design.PanelRound();
         jLabel5 = new javax.swing.JLabel();
+        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
         textBox3 = new app.vehicle.design.PanelRound();
         jLabel6 = new javax.swing.JLabel();
+        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
         textBox4 = new app.vehicle.design.PanelRound();
         jLabel7 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         textBox5 = new app.vehicle.design.PanelRound();
         jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -87,7 +130,12 @@ public final class Dashboard extends javax.swing.JPanel {
 
         jLabel2.setText("Leaving from");
         textBox1.add(jLabel2);
-        jLabel2.setBounds(20, 10, 80, 16);
+        jLabel2.setBounds(20, 0, 80, 20);
+
+        jTextField2.setBackground(new java.awt.Color(237, 237, 237));
+        jTextField2.setBorder(null);
+        textBox1.add(jTextField2);
+        jTextField2.setBounds(20, 20, 160, 30);
 
         textBox2.setBackground(new java.awt.Color(237, 237, 237));
         textBox2.setRoundBottomLeft(12);
@@ -97,7 +145,9 @@ public final class Dashboard extends javax.swing.JPanel {
 
         jLabel5.setText("Pick Up Date");
         textBox2.add(jLabel5);
-        jLabel5.setBounds(20, 10, 80, 16);
+        jLabel5.setBounds(20, 0, 80, 20);
+        textBox2.add(dateChooserCombo2);
+        dateChooserCombo2.setBounds(10, 20, 155, 22);
 
         textBox3.setBackground(new java.awt.Color(237, 237, 237));
         textBox3.setRoundBottomLeft(12);
@@ -107,7 +157,11 @@ public final class Dashboard extends javax.swing.JPanel {
 
         jLabel6.setText("Dropoff date");
         textBox3.add(jLabel6);
-        jLabel6.setBounds(20, 10, 80, 16);
+        jLabel6.setBounds(20, 0, 80, 20);
+
+        dateChooserCombo1.setCalendarPreferredSize(new java.awt.Dimension(262, 246));
+        textBox3.add(dateChooserCombo1);
+        dateChooserCombo1.setBounds(10, 20, 155, 22);
 
         textBox4.setBackground(new java.awt.Color(237, 237, 237));
         textBox4.setRoundBottomLeft(12);
@@ -117,7 +171,12 @@ public final class Dashboard extends javax.swing.JPanel {
 
         jLabel7.setText("Pickup location");
         textBox4.add(jLabel7);
-        jLabel7.setBounds(20, 10, 110, 16);
+        jLabel7.setBounds(20, 0, 110, 20);
+
+        jTextField3.setBackground(new java.awt.Color(237, 237, 237));
+        jTextField3.setBorder(null);
+        textBox4.add(jTextField3);
+        jTextField3.setBounds(20, 20, 150, 30);
 
         textBox5.setBackground(new java.awt.Color(237, 237, 237));
         textBox5.setRoundBottomLeft(12);
@@ -127,7 +186,12 @@ public final class Dashboard extends javax.swing.JPanel {
 
         jLabel8.setText("Dropoff Location");
         textBox5.add(jLabel8);
-        jLabel8.setBounds(20, 10, 100, 16);
+        jLabel8.setBounds(20, 0, 100, 20);
+
+        jTextField1.setBackground(new java.awt.Color(237, 237, 237));
+        jTextField1.setBorder(null);
+        textBox5.add(jTextField1);
+        jTextField1.setBounds(20, 20, 150, 30);
 
         jButton1.setBackground(new java.awt.Color(255, 92, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/app/dashboard/png/Vector (3).png"))); // NOI18N
@@ -300,6 +364,8 @@ public final class Dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datechooser.beans.DateChooserCombo dateChooserCombo1;
+    private datechooser.beans.DateChooserCombo dateChooserCombo2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -310,6 +376,9 @@ public final class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private app.vehicle.design.PanelItem panelItem1;
     private javax.swing.JScrollPane scroll;
     private app.vehicle.design.PanelRound textBox1;

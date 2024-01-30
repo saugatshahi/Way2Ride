@@ -17,10 +17,7 @@ import app.vehicle.authentication.RegisterDocument;
 import app.vehicle.authentication.SecurityQsnForm;
 import raven.toast.Notifications;
 import app.vehicle.dao.AuthDAO;
-import app.vehicle.dao.ProfileChangeDAO;
 import app.vehicle.dao.SecurityDAO;
-import static app.vehicle.dao.SecurityDAO.ForgotPasswordStatus.ERROR;
-import static app.vehicle.dao.SecurityDAO.ForgotPasswordStatus.SUCCESS;
 import app.vehicle.menu.Menu;
 import app.vehicle.model.Customer;
 import app.vehicle.model.License;
@@ -55,7 +52,7 @@ public class Application extends javax.swing.JFrame {
         securityQsn = new SecurityQsnForm();
         menu = new Menu();
         
-        setContentPane(mainForm);
+        setContentPane(loginForm);
         Notifications.getInstance().setJFrame(this);
         GlassPanePopup.install(this);
     }

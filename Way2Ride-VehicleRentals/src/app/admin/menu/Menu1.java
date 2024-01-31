@@ -37,7 +37,7 @@ public class Menu1 extends JComponent {
     private MigLayout layout;
     private String[][] menuItems = new String[][]{
         {"Dashboard"},
-        {"Vehicle Management", "AddVehicle", "AllVehicle"},
+        {"Vehicle Management", "Add Vehicle", "All Vehicle"},
         {"User Management"},
         {"Received Orders"},
         {"Statistics"},

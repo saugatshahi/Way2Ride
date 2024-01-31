@@ -78,10 +78,11 @@ public class Menu extends JPanel {
 
     public Menu() {
         init();
+        
         header.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-//                changeProfilePicture();
+                changeProfilePicture();
             }
         });
     }
@@ -90,32 +91,30 @@ public class Menu extends JPanel {
         return this.profileImage;
     }
     
-//    private void changeProfilePicture() {
-//        JFileChooser fileChooser = new JFileChooser();
-//        
-//        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
-//        fileChooser.setFileFilter(imageFilter);
-//        
-//        int result = fileChooser.showOpenDialog(this);
-//        
-//        if (result == JFileChooser.APPROVE_OPTION) {
-//            selectedFile = fileChooser.getSelectedFile();
-//            String imageName = selectedFile.getName();
-//            
-//            displayImage(selectedFile);
-//            
-//            if (imageName != null) {
-//                try {
-//                    profileImage = Files.readAllBytes(selectedFile.toPath());
-//                    if (Application.performProfileUpdate(loginForm.getUserEntry(), profileImage)) {
-//                        System.out.print("apple");
-//                    }
-//                } catch (IOException ex) {
-//                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
-//    }
+    private void changeProfilePicture() {
+        JFileChooser fileChooser = new JFileChooser();
+        
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", "png", "jpeg", "jpg", "gif");
+        fileChooser.setFileFilter(imageFilter);
+        
+        int result = fileChooser.showOpenDialog(this);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();
+            String imageName = selectedFile.getName();
+            
+            displayImage(selectedFile);
+            
+            if (imageName != null) {
+                try {
+                    profileImage = Files.readAllBytes(selectedFile.toPath());
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 
     private void init() {
         setLayout(new MenuLayout());

@@ -62,7 +62,14 @@ public final class Dashboard extends javax.swing.JPanel {
         
         dateChooserCombo1.setBackground(Color.decode("#EDEDED"));
         dateChooserCombo2.setBackground(Color.decode("#EDEDED"));
-       
+       jTextField1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Enter location");
+       jTextField1.setBorder(null);
+       jTextField2.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Enter Pickup Location");
+       jTextField3.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Enter Dropoff Location");
+       dateChooserCombo1.setBorder(null);
+       dateChooserCombo1.setBackground(Color.decode("#EDEDED"));
+        dateChooserCombo2.setBorder(null);
+       dateChooserCombo2.setBackground(Color.decode("#EDEDED"));
         addCategory();
     }
     
@@ -146,6 +153,8 @@ public final class Dashboard extends javax.swing.JPanel {
         jLabel5.setText("Pick Up Date");
         textBox2.add(jLabel5);
         jLabel5.setBounds(20, 0, 80, 20);
+
+        dateChooserCombo2.setCalendarPreferredSize(new java.awt.Dimension(262, 246));
         textBox2.add(dateChooserCombo2);
         dateChooserCombo2.setBounds(10, 20, 155, 22);
 
@@ -230,10 +239,10 @@ public final class Dashboard extends javax.swing.JPanel {
         panelItem1.setOpaque(false);
         scroll.setViewportView(panelItem1);
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 0));
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("RewardPoint");
+        jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 51, 0));
+        jButton2.setText("Reward Point");
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -248,12 +257,14 @@ public final class Dashboard extends javax.swing.JPanel {
                 .addGap(329, 329, 329)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel3)
                 .addGap(63, 63, 63)
                 .addComponent(jLabel4)
                 .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,14 +275,11 @@ public final class Dashboard extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, 1049, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +292,8 @@ public final class Dashboard extends javax.swing.JPanel {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))))
+                            .addComponent(jLabel4)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,14 +302,8 @@ public final class Dashboard extends javax.swing.JPanel {
                     .addComponent(textBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(26, 26, 26)
+                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -355,8 +358,8 @@ public final class Dashboard extends javax.swing.JPanel {
             
             @Override
             public String getLayout(Component parent, float animate) {
-                float xOffset = 0.764f;
-                float yOffset = 0.145f;
+                float xOffset = 0.666f;
+                float yOffset = 0.158f;
 
                 return "pos " + xOffset + "al " + yOffset + "al";
             }

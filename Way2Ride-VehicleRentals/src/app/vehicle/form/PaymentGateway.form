@@ -275,7 +275,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel12" min="-2" pref="85" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel13" min="-2" pref="85" max="-2" attributes="0"/>
+                                  <Component id="grandPrice" min="-2" pref="85" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -344,7 +344,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="grandPrice" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel10" min="-2" pref="87" max="-2" attributes="0"/>
@@ -517,7 +517,7 @@
             <Property name="text" type="java.lang.String" value="Sitapkaha, 001 Highway"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel13">
+        <Component class="javax.swing.JLabel" name="grandPrice">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI Semibold" size="14" style="0"/>

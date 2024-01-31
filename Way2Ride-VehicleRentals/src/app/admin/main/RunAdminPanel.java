@@ -26,7 +26,7 @@ public class RunAdminPanel extends javax.swing.JFrame {
         System.out.println(index + " " + subIndex);
         if (index == 0 ) {
             showForm(new AdminDashboard());
-        } else if (index == 1 && subIndex == 2) {
+        } else if (index == 1 && subIndex == 1) {
             showForm(new AddVehicle());
         } else if (index == 2) {
             showForm(new AllVehicle());

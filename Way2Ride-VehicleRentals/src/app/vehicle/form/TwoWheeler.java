@@ -9,8 +9,13 @@ public class TwoWheeler extends javax.swing.JPanel {
 
     public TwoWheeler() {
         initComponents();
+        int i = 0;
+        do {
+            addBikeCategory(); 
+            i++;
+        }while(i <= 5);
         
-        addBikeCategory();
+       
     }
     
     private void addBikeCategory() {

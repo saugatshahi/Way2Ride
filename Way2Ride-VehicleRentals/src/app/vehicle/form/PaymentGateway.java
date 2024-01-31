@@ -73,6 +73,7 @@ public class PaymentGateway extends javax.swing.JPanel {
         
         orderID1.setText("#" + orderID);
         transactionDate1.setText(currentDate);
+        grandPrice.setText(price);
         
     }
     
@@ -133,7 +134,7 @@ public class PaymentGateway extends javax.swing.JPanel {
         transactionDate1 = new javax.swing.JLabel();
         location1 = new javax.swing.JLabel();
         streetAddress1 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        grandPrice = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         postalCode = new javax.swing.JTextField();
@@ -251,8 +252,8 @@ public class PaymentGateway extends javax.swing.JPanel {
         streetAddress1.setForeground(new java.awt.Color(102, 102, 102));
         streetAddress1.setText("Sitapkaha, 001 Highway");
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel13.setText("NRs. 12900");
+        grandPrice.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        grandPrice.setText("NRs. 12900");
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel18.setText("No Discount");
@@ -287,7 +288,7 @@ public class PaymentGateway extends javax.swing.JPanel {
                             .addGroup(shadowRentalLayout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(grandPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(shadowRentalLayout.createSequentialGroup()
                         .addComponent(location, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -341,7 +342,7 @@ public class PaymentGateway extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(shadowRentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(grandPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
@@ -517,11 +518,11 @@ public class PaymentGateway extends javax.swing.JPanel {
     private javax.swing.JTextField emailAddress;
     private javax.swing.JTextField expiryDate;
     private javax.swing.JButton goBackButton;
+    private javax.swing.JLabel grandPrice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;

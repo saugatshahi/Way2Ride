@@ -1,7 +1,6 @@
 package app.vehicle.controller;
 
 import app.vehicle.dao.BillingDAO;
-import app.vehicle.dao.CategoryDAO;
 import app.vehicle.design.PanelItem;
 import java.awt.Container;
 import javax.swing.ImageIcon;
@@ -126,10 +125,10 @@ public class BillingItem extends javax.swing.JPanel {
         boolean check = billingDAO.deleteHistory(orderIDString);
                 
         if (check) {
-            Notifications.getInstance().show(Notifications.Type.SUCCESS, "History Deleted!");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, "Your order has been cancelled!");
         }
         else {
-            Notifications.getInstance().show(Notifications.Type.INFO, "Sorry for the inconvenience!");
+            Notifications.getInstance().show(Notifications.Type.ERROR, "Sorry for the inconvenience!");
         }
     }//GEN-LAST:event_cancelOrderActionPerformed
 

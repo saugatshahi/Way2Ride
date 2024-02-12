@@ -13,6 +13,7 @@ import java.awt.Component;
  * @author shahi
  */
 public class RunAdminPanel extends javax.swing.JFrame {
+    
 
     public RunAdminPanel() {
         initComponents();
@@ -30,9 +31,12 @@ public class RunAdminPanel extends javax.swing.JFrame {
             showForm(new AddVehicle());
         } else if (index == 2) {
             showForm(new AllVehicle());
-        } else if (index == 7) {
+        } else if (index == 6) {
+            showForm(new AddNotification());
+        }
+        else if (index == 7) {
             dispose();
-            Application.openLoginForm();
+            Application.openLoginForm();      
         } else {
             showForm(new AllVehicle());
         }

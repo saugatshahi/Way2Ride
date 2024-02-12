@@ -69,7 +69,7 @@
                                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jButton1" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
+                                      <Component id="changePasswordButton" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -85,7 +85,7 @@
                                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                           <Component id="shippingAddressField" min="-2" pref="229" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jButton2" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
+                                      <Component id="checkPasswordStrengthButton" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -161,8 +161,8 @@
                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton2" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="checkPasswordStrengthButton" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="changePasswordButton" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -380,15 +380,21 @@
             <Property name="text" type="java.lang.String" value="Password &amp; Security"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="changePasswordButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Change your password"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePasswordButtonActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="checkPasswordStrengthButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Check your password&apos;s strength"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkPasswordStrengthButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>

@@ -39,6 +39,7 @@ public final class Dashboard extends javax.swing.JPanel {
         jLabel3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jLabel4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
+        jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         scroll.setVerticalScrollBar(new ScrollBar());
         String fontFilePath = "/app/vehicle/font/Khula-SemiBold.ttf";
         try {
@@ -243,6 +244,7 @@ public final class Dashboard extends javax.swing.JPanel {
         jButton2.setForeground(new java.awt.Color(255, 51, 0));
         jButton2.setText("Reward Point");
         jButton2.setBorder(null);
+        jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

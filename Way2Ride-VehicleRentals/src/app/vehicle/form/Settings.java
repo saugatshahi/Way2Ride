@@ -12,12 +12,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import raven.toast.Notifications;
 
 
 public class Settings extends javax.swing.JPanel {
+    private ChangePassword changePassword;
+    private JDialog changePasswordDialog;
+    private PasswordStrength checkPasswordStrength;
+    private JDialog checkPasswordStrengthDialog;
     
     private File selectedFile;
     private byte[] imageData;
@@ -25,6 +32,20 @@ public class Settings extends javax.swing.JPanel {
     public Settings() {
         initComponents();
         populateFields();
+        changePassword = new ChangePassword();
+
+        changePasswordDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Payment Details", true);
+        changePasswordDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        changePasswordDialog.getContentPane().add(changePassword);
+        changePasswordDialog.pack();
+        
+        checkPasswordStrength = new PasswordStrength();
+
+        checkPasswordStrengthDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "Payment Details", true);
+        checkPasswordStrengthDialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        checkPasswordStrengthDialog.getContentPane().add(checkPasswordStrength);
+        checkPasswordStrengthDialog.pack();
+        
     }
     
     String storedEmail = LoginForm.getStoredUserEmail();
@@ -105,8 +126,8 @@ public class Settings extends javax.swing.JPanel {
         expiryDateField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        changePasswordButton = new javax.swing.JButton();
+        checkPasswordStrengthButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         jTextField4.setText("jTextField1");
@@ -181,9 +202,19 @@ public class Settings extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(153, 153, 153));
         jLabel15.setText("Password & Security");
 
-        jButton1.setText("Change your password");
+        changePasswordButton.setText("Change your password");
+        changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Check your password's strength");
+        checkPasswordStrengthButton.setText("Check your password's strength");
+        checkPasswordStrengthButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkPasswordStrengthButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 92, 0));
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 15)); // NOI18N
@@ -219,7 +250,7 @@ public class Settings extends javax.swing.JPanel {
                                             .addComponent(jLabel9)
                                             .addComponent(fullNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel3)))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(changePasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(42, 42, 42)
                                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -232,7 +263,7 @@ public class Settings extends javax.swing.JPanel {
                                         .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(45, 45, 45)
                                         .addComponent(shippingAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(checkPasswordStrengthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addGroup(panelShadow1Layout.createSequentialGroup()
@@ -288,8 +319,8 @@ public class Settings extends javax.swing.JPanel {
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkPasswordStrengthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(changePasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
@@ -355,6 +386,14 @@ public class Settings extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
+        changePasswordDialog();
+    }//GEN-LAST:event_changePasswordButtonActionPerformed
+
+    private void checkPasswordStrengthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPasswordStrengthButtonActionPerformed
+        checkPasswordStrengthDialog();
+    }//GEN-LAST:event_checkPasswordStrengthButtonActionPerformed
+
     public File getSelectedFile() {
         return selectedFile;
     }
@@ -372,16 +411,36 @@ public class Settings extends javax.swing.JPanel {
             System.out.println(e);
         }
     }
+    private void changePasswordDialog() {
+       int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - changePasswordDialog.getWidth() / 2);
+        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - changePasswordDialog.getHeight() / 2);
+
+        // Set the location of the dialog
+        changePasswordDialog.setLocation(centerX, centerY);
+
+        // Make the dialog visible
+        changePasswordDialog.setVisible(true);
+    }
+    private void checkPasswordStrengthDialog() {
+       int centerX = (int) (this.getTopLevelAncestor().getLocationOnScreen().getX() + this.getTopLevelAncestor().getSize().getWidth() / 2 - checkPasswordStrengthDialog.getWidth() / 2);
+        int centerY = (int) (this.getTopLevelAncestor().getLocationOnScreen().getY() + this.getTopLevelAncestor().getSize().getHeight() / 2 - checkPasswordStrengthDialog.getHeight() / 2);
+
+        // Set the location of the dialog
+        checkPasswordStrengthDialog.setLocation(centerX, centerY);
+
+        // Make the dialog visible
+        checkPasswordStrengthDialog.setVisible(true);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton changePasswordButton;
+    private javax.swing.JButton checkPasswordStrengthButton;
     private javax.swing.JTextField contactField;
     private javax.swing.JTextField expiryDateField;
     private javax.swing.JTextField fullNameField;
     private javax.swing.JTextField homeAddressField;
     private app.vehicle.design.ImageAvatar imageAvatar1;
     private javax.swing.JTextField issueDateField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
